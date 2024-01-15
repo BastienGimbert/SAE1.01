@@ -42,6 +42,38 @@ public class Classification {
 
 
     public static void classementDepeches(ArrayList<Depeche> depeches, ArrayList<Categorie> categories, String nomFichier) {
+        ArrayList<PaireChaineEntier> scoreParCat;
+        ArrayList<PaireChaineEntier> pourcentageCat = new ArrayList<>();
+        for (Categorie uneCategorie: categories) {
+            pourcentageCat.add(new PaireChaineEntier(uneCategorie.getNom(), 0));
+        }
+        try {
+            FileWriter file = new FileWriter(nomFichier);
+
+            for (int i = 0; i < depeches.size(); i++) {
+                scoreParCat = new ArrayList<>();
+                for (Categorie uneCategorie: categories) {
+                    scoreParCat.add(new PaireChaineEntier(uneCategorie.getNom(), uneCategorie.score(depeches.get(i))));
+                }
+                String catCourante = UtilitairePaireChaineEntier.chaineMax(scoreParCat);
+
+                for (PaireChaineEntier unePaire: pourcentageCat) {
+                    if (unePaire.getChaine().equals(catCourante)) {
+                        unePaire.setEntier(unePaire.getEntier()+1);
+                    }
+                }
+
+                file.write(depeches.get(i).getId()+" : "+catCourante+"\n");
+            }
+            for (PaireChaineEntier unePaire: pourcentageCat) {
+                file.write(unePaire.getChaine()+" : "+unePaire.getEntier()+"%"+"\n");
+            }
+            file.write("MOYENNE: "+UtilitairePaireChaineEntier.moyenne(pourcentageCat)+"%");
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -110,6 +142,8 @@ public class Classification {
             score.add(new PaireChaineEntier(uneCategorie.getNom(), uneCategorie.score(depeches.get(403-1))));
         }
         System.out.println(UtilitairePaireChaineEntier.chaineMax(score));
+
+        Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
 
 
     }

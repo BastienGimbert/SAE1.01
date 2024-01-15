@@ -4,7 +4,16 @@ public class UtilitairePaireChaineEntier {
 
 
     public static int indicePourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
-        return 0;
+        int i = 0;
+
+        while (i < listePaires.size() && !listePaires.get(i).getChaine().equals(chaine)) {
+            i++;
+        }
+        if (i == listePaires.size()) {
+            return -1;
+        } else {
+            return i;
+        }
 
     }
 
@@ -33,7 +42,15 @@ public class UtilitairePaireChaineEntier {
 
 
     public static float moyenne(ArrayList<PaireChaineEntier> listePaires) {
-        return 0;
+        float moyenne = 0.0f;
+        int i = 0;
+
+        while (i < listePaires.size()) {
+            moyenne+=listePaires.get(i).getEntier();
+            i++;
+        }
+
+        return moyenne / listePaires.size();
     }
 
 }
