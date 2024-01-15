@@ -65,15 +65,19 @@ public class Classification {
     public static void main(String[] args) {
 
         //Chargement des dépêches en mémoire
+        Scanner lecteur = new Scanner(System.in);
         System.out.println("chargement des dépêches");
         ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
         Categorie culture = new Categorie("Culture");
         culture.initLexique("./culture.txt");
 
-        System.out.println(culture.getLexique());
-        for (int i = 0; i < depeches.size(); i++) {
-            depeches.get(i).afficher();
-        }
+//        System.out.println(culture.getLexique());
+//        for (int i = 0; i < depeches.size(); i++) {
+//            depeches.get(i).afficher();
+//        }
+        System.out.println("Donnez un mot : ");
+        String saisie = lecteur.nextLine();
+        System.out.println(UtilitairePaireChaineEntier.entierPourChaine(culture.getLexique(), saisie));
 
 
 
