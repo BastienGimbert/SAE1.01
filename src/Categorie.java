@@ -50,7 +50,12 @@ public class Categorie {
 
     //calcul du score d'une dépêche pour la catégorie
     public int score(Depeche d) {
-        return 0;
+        String[] dep = d.getContenu().split(" ");
+        int total = 0;
+        for (int i = 0; i < dep.length; i++) {
+            total += UtilitairePaireChaineEntier.entierPourChaine(this.lexique, dep[i]);
+        }
+        return total;
     }
 
 }

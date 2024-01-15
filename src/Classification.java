@@ -75,10 +75,12 @@ public class Classification {
 //        for (int i = 0; i < depeches.size(); i++) {
 //            depeches.get(i).afficher();
 //        }
-        System.out.println("Donnez un mot : ");
-        String saisie = lecteur.nextLine();
-        System.out.println(UtilitairePaireChaineEntier.entierPourChaine(culture.getLexique(), saisie));
+//        System.out.println("Donnez un mot : ");
+//        String saisie = lecteur.nextLine();
+//        System.out.println(UtilitairePaireChaineEntier.entierPourChaine(culture.getLexique(), saisie));
 
+        System.out.println(depeches.get(113-1).getContenu());
+        System.out.println("score dans culture : "+culture.score(depeches.get(113-1)));
 
 
     }
