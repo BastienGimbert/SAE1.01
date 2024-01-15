@@ -16,7 +16,6 @@ tabagismes:3
 cardiaques:3
 cardiaque:3
 fumer:1
-satellite-espion:2
 satellite:2
 satellites:2
 orbite:1
@@ -28,7 +27,10 @@ missiles:2
 CO2:3
 vent:1
 vents:1
-gaz à effet de serre:3
+GES:3
+gaz:2
+effet:1
+serre:3
 OGM:2
 hectares:1
 hectare:1
