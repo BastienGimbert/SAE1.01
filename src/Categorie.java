@@ -11,6 +11,7 @@ public class Categorie {
     // constructeur
     public Categorie(String nom) {
         this.nom = nom;
+        this.lexique = new ArrayList<>();
     }
 
 
@@ -37,7 +38,7 @@ public class Categorie {
                 int force = Integer.parseInt(ligne[1]);
                 System.out.println("mot = "+mot);
                 System.out.println("force = "+force);
-                // this.lexique.add(new PaireChaineEntier(mot, force));
+                this.lexique.add(new PaireChaineEntier(mot, force));
                 i++;
             }
             scanner.close();
