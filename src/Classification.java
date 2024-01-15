@@ -43,10 +43,12 @@ public class Classification {
 
     public static void classementDepeches(ArrayList<Depeche> depeches, ArrayList<Categorie> categories, String nomFichier) {
         ArrayList<PaireChaineEntier> scoreParCat;
-        ArrayList<PaireChaineEntier> pourcentageCat = new ArrayList<>();
-        for (Categorie uneCategorie: categories) {
-            pourcentageCat.add(new PaireChaineEntier(uneCategorie.getNom(), 0));
-        }
+        int envs = 0;
+        int culture = 0;
+        int politique = 0;
+        int sport = 0;
+        int eco = 0;
+
         try {
             FileWriter file = new FileWriter(nomFichier);
 
@@ -57,18 +59,40 @@ public class Classification {
                 }
                 String catCourante = UtilitairePaireChaineEntier.chaineMax(scoreParCat);
 
-                for (PaireChaineEntier unePaire: pourcentageCat) {
-                    if (unePaire.getChaine().equals(catCourante)) {
-                        unePaire.setEntier(unePaire.getEntier()+1);
+                if (i>=0 && i<=100) {
+                    if (catCourante.equals("Environnement-Sciences")) {
+                        envs++;
+                    }
+                } else if (i>100 && i<=200) {
+                    if (catCourante.equals("Culture")) {
+                        culture++;
+                    }
+                } else if (i>200 && i<=300) {
+                    if (catCourante.equals("Economie")) {
+                        eco++;
+                    }
+                } else if (i>300 && i<=400) {
+                    if (catCourante.equals("Politique")) {
+                        politique++;
+                    }
+                } else {
+                    if (catCourante.equals("Sport")) {
+                        sport++;
                     }
                 }
 
+
                 file.write(depeches.get(i).getId()+" : "+catCourante+"\n");
             }
-            for (PaireChaineEntier unePaire: pourcentageCat) {
-                file.write(unePaire.getChaine()+" : "+unePaire.getEntier()+"%"+"\n");
-            }
-            file.write("MOYENNE: "+UtilitairePaireChaineEntier.moyenne(pourcentageCat)+"%");
+
+            file.write("ENVIRONNEMENT-SCIENCE: "+envs+"%\n");
+            file.write("CULTURE: "+culture+"%\n");
+            file.write("ECONOMIE: "+eco+"%\n");
+            file.write("POLITIQUE: "+politique+"%\n");
+            file.write("SPORTS: "+sport+"%\n");
+
+
+            file.write("MOYENNE: "+(envs+culture+eco+politique+sport)/5+"%");
             file.close();
         } catch (IOException e) {
             e.printStackTrace();
