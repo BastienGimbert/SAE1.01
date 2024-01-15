@@ -82,7 +82,6 @@ public class Classification {
         Categorie sport = new Categorie("Sport");
         sport.initLexique("./sports.txt");
 
-
 //        System.out.println(culture.getLexique());
 //        for (int i = 0; i < depeches.size(); i++) {
 //            depeches.get(i).afficher();
