@@ -26,7 +26,24 @@ public class Categorie {
 
     // initialisation du lexique de la catégorie à partir du contenu d'un fichier texte
     public void initLexique(String nomFichier) {
-
+        try {
+            // lecture du fichier d'entrée
+            FileInputStream file = new FileInputStream(nomFichier);
+            Scanner scanner = new Scanner(file);
+            int i = 0;
+            while (scanner.hasNextLine()) {
+                String[] ligne = scanner.nextLine().split(":");
+                String mot = ligne[0];
+                int force = Integer.parseInt(ligne[1]);
+                System.out.println("mot = "+mot);
+                System.out.println("force = "+force);
+                // this.lexique.add(new PaireChaineEntier(mot, force));
+                i++;
+            }
+            scanner.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -34,6 +51,5 @@ public class Categorie {
     public int score(Depeche d) {
         return 0;
     }
-
 
 }

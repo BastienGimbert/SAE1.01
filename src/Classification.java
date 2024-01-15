@@ -66,11 +66,16 @@ public class Classification {
 
         //Chargement des dépêches en mémoire
         System.out.println("chargement des dépêches");
-        ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
+        // ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
+        Categorie culture = new Categorie("Culture");
+        culture.initLexique("./culture.txt");
 
-        for (int i = 0; i < depeches.size(); i++) {
-            depeches.get(i).afficher();
-        }
+        System.out.println(culture.getLexique());
+//        for (int i = 0; i < depeches.size(); i++) {
+//            depeches.get(i).afficher();
+//        }
+
+
 
     }
 
