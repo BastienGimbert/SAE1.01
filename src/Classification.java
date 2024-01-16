@@ -103,6 +103,22 @@ public class Classification {
 
     public static ArrayList<PaireChaineEntier> initDico(ArrayList<Depeche> depeches, String categorie) {
         ArrayList<PaireChaineEntier> resultat = new ArrayList<>();
+
+        for (Depeche uneDep:
+             depeches) {
+            if (uneDep.getCategorie().equals(categorie)) {
+                ArrayList<String> mots = uneDep.getMots();
+                for (String mot:
+                     mots) {
+                    int indCour = UtilitairePaireChaineEntier.entierPourChaine(resultat, mot);
+                    if (indCour==0) {
+                        resultat.add(new PaireChaineEntier(mot, 0));
+                    } else {
+                        resultat.get(indCour).setEntier(+1);
+                    }
+                }
+            }
+        }
         return resultat;
 
     }
@@ -169,7 +185,12 @@ public class Classification {
 
         Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
 
+        // System.out.println(initDico(depeches, "SPORTS").get(450).getEntier());
 
+        for (PaireChaineEntier unePaire:
+                initDico(depeches, "SPORTS")) {
+            System.out.println(unePaire.getEntier());
+        }
     }
 
 
