@@ -110,8 +110,8 @@ public class Classification {
                 ArrayList<String> mots = uneDep.getMots();
                 for (String mot:
                      mots) {
-                    int indCour = UtilitairePaireChaineEntier.entierPourChaine(resultat, mot);
-                    if (indCour==0) {
+                    int indCour = UtilitairePaireChaineEntier.indicePourChaine(resultat, mot);
+                    if (indCour==-1) {
                         resultat.add(new PaireChaineEntier(mot, 0));
                     } else {
                         resultat.get(indCour).setEntier(resultat.get(indCour).getEntier()+1);
