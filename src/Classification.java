@@ -114,7 +114,7 @@ public class Classification {
                     if (indCour==0) {
                         resultat.add(new PaireChaineEntier(mot, 0));
                     } else {
-                        resultat.get(indCour).setEntier(+1);
+                        resultat.get(indCour).setEntier(resultat.get(indCour).getEntier()+1);
                     }
                 }
             }
@@ -132,9 +132,9 @@ public class Classification {
                 int indCour = UtilitairePaireChaineEntier.indicePourChaine(dictionnaire, mot);
                 if (indCour>-1) {
                     if (!uneDep.getCategorie().equals(categorie)) {
-                        dictionnaire.get(indCour).setEntier(-1);
+                        dictionnaire.get(indCour).setEntier(dictionnaire.get(indCour).getEntier()-1);
                     } else {
-                        dictionnaire.get(indCour).setEntier(+1);
+                        dictionnaire.get(indCour).setEntier(dictionnaire.get(indCour).getEntier()+1);
                     }
                 }
             }
@@ -142,11 +142,33 @@ public class Classification {
     }
 
     public static int poidsPourScore(int score) {
-        return 0;
+        if (score<=0) {
+            return 0;
+        } else if (score<4) {
+            return 1;
+        } else if (score<7) {
+            return 2;
+        } else {
+            return 3;
+        }
     }
 
     public static void generationLexique(ArrayList<Depeche> depeches, String categorie, String nomFichier) {
+        ArrayList<PaireChaineEntier> dico = initDico(depeches, categorie);
+        calculScores(depeches, categorie, dico);
 
+
+        try {
+            FileWriter file = new FileWriter(nomFichier);
+            for (PaireChaineEntier unePaire:
+                    dico) {
+                file.write(unePaire.getChaine()+":"+poidsPourScore(unePaire.getEntier())+"\n");
+            }
+
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
@@ -200,20 +222,12 @@ public class Classification {
 
         Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
 
-        // System.out.println(initDico(depeches, "SPORTS").get(450).getEntier());
-        System.out.println("Dico avant CalculScore : ");
-        ArrayList<PaireChaineEntier> dico = initDico(depeches, "SPORTS");
-        for (PaireChaineEntier unePaire:
-                dico) {
-            System.out.println(unePaire.getEntier()+" : "+unePaire.getChaine());
-        }
+        generationLexique(depeches, "ENVIRONNEMENT-SCIENCES", "./envsResult.txt");
+        generationLexique(depeches, "CULTURE", "./cultureResult.txt");
+        generationLexique(depeches, "ECONOMIE", "./ecoResult.txt");
+        generationLexique(depeches, "POLITIQUE", "./politiqueResult.txt");
+        generationLexique(depeches, "SPORTS", "./sportResult.txt");
 
-        calculScores(depeches, "SPORTS", dico);
-        System.out.println("Dico après CalculScore : ");
-        for (PaireChaineEntier unePaire:
-                dico) {
-            System.out.println(unePaire.getEntier()+" : "+unePaire.getChaine());
-        }
     }
 
 
