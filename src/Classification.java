@@ -59,19 +59,19 @@ public class Classification {
                 }
                 String catCourante = UtilitairePaireChaineEntier.chaineMax(scoreParCat);
 
-                if (i>=0 && i<=100) {
+                if (depeches.get(i).getCategorie().equals("ENVIRONNEMENT-SCIENCES")) {
                     if (catCourante.equals("Environnement-Sciences")) {
                         envs++;
                     }
-                } else if (i>100 && i<=200) {
+                } else if (depeches.get(i).getCategorie().equals("CULTURE")) {
                     if (catCourante.equals("Culture")) {
                         culture++;
                     }
-                } else if (i>200 && i<=300) {
+                } else if (depeches.get(i).getCategorie().equals("ECONOMIE")) {
                     if (catCourante.equals("Economie")) {
                         eco++;
                     }
-                } else if (i>300 && i<=400) {
+                } else if (depeches.get(i).getCategorie().equals("POLITIQUE")) {
                     if (catCourante.equals("Politique")) {
                         politique++;
                     }
@@ -162,6 +162,7 @@ public class Classification {
             FileWriter file = new FileWriter(nomFichier);
             for (PaireChaineEntier unePaire : dico) {
                 String chaine = unePaire.getChaine();
+                chaine = chaine.replace(":", "");
                 if (!chaine.matches("^\\p{Punct}+$")) {
                     if (i < dico.size() - 1) {
                         file.write(chaine + ":" + poidsPourScore(unePaire.getEntier()) + "\n");
@@ -181,7 +182,7 @@ public class Classification {
     public static void main(String[] args) {
         //Chargement des dépêches en mémoire
         System.out.println("chargement des dépêches");
-        ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
+        ArrayList<Depeche> depeches = lectureDepeches("./test.txt");
 
         // Variables
         Scanner lecteur = new Scanner(System.in);
