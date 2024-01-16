@@ -23,7 +23,7 @@ public class UtilitairePaireChaineEntier {
             i++;
         }
         if (i < listePaires.size()) {
-            return listePaires.get(i).getEntier();
+            return i;
         } else {
             return 0;
         }
