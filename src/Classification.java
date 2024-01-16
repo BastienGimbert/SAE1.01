@@ -103,22 +103,39 @@ public class Classification {
 
     public static ArrayList<PaireChaineEntier> initDico(ArrayList<Depeche> depeches, String categorie) {
         ArrayList<PaireChaineEntier> resultat = new ArrayList<>();
-
-        for (Depeche uneDep:
-             depeches) {
-            if (uneDep.getCategorie().equals(categorie)) {
-                ArrayList<String> mots = uneDep.getMots();
-                for (String mot:
-                     mots) {
-                    int indCour = UtilitairePaireChaineEntier.indicePourChaine(resultat, mot);
-                    if (indCour==-1) {
-                        resultat.add(new PaireChaineEntier(mot, 0));
-                    } else {
-                        resultat.get(indCour).setEntier(resultat.get(indCour).getEntier()+1);
-                    }
+        int i = 0;
+        while (!depeches.get(i).getCategorie().equals(categorie)) {
+            i++;
+        }
+        while (i < depeches.size() && depeches.get(i).getCategorie().equals(categorie)) {
+            ArrayList<String> mots = depeches.get(i).getMots();
+            for (String mot:
+                    mots) {
+                int indCour = UtilitairePaireChaineEntier.indicePourChaine(resultat, mot);
+                if (indCour==-1) {
+                    resultat.add(new PaireChaineEntier(mot, 0));
+                } else {
+                    resultat.get(indCour).setEntier(resultat.get(indCour).getEntier()+1);
                 }
             }
+            i++;
         }
+
+//        for (Depeche uneDep:
+//             depeches) {
+//            if (uneDep.getCategorie().equals(categorie)) {
+//                ArrayList<String> mots = uneDep.getMots();
+//                for (String mot:
+//                     mots) {
+//                    int indCour = UtilitairePaireChaineEntier.indicePourChaine(resultat, mot);
+//                    if (indCour==-1) {
+//                        resultat.add(new PaireChaineEntier(mot, 0));
+//                    } else {
+//                        resultat.get(indCour).setEntier(resultat.get(indCour).getEntier()+1);
+//                    }
+//                }
+//            }
+//        }
         return resultat;
 
     }
@@ -243,8 +260,8 @@ public class Classification {
         }
         System.out.println(UtilitairePaireChaineEntier.chaineMax(score));
 
-        long startTime = System.currentTimeMillis(); //Debut du chrono
 
+        long startTime = System.currentTimeMillis(); // Début du chrono
         Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
 
         generationLexique(depeches, "ENVIRONNEMENT-SCIENCES", "./envsResult.txt");
