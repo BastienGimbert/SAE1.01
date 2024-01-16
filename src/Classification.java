@@ -124,6 +124,21 @@ public class Classification {
     }
 
     public static void calculScores(ArrayList<Depeche> depeches, String categorie, ArrayList<PaireChaineEntier> dictionnaire) {
+        for (Depeche uneDep:
+             depeches) {
+            ArrayList<String> mots = uneDep.getMots();
+            for (String mot:
+                    mots) {
+                int indCour = UtilitairePaireChaineEntier.indicePourChaine(dictionnaire, mot);
+                if (indCour>-1) {
+                    if (!uneDep.getCategorie().equals(categorie)) {
+                        dictionnaire.get(indCour).setEntier(-1);
+                    } else {
+                        dictionnaire.get(indCour).setEntier(+1);
+                    }
+                }
+            }
+        }
     }
 
     public static int poidsPourScore(int score) {
@@ -186,10 +201,18 @@ public class Classification {
         Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
 
         // System.out.println(initDico(depeches, "SPORTS").get(450).getEntier());
-
+        System.out.println("Dico avant CalculScore : ");
+        ArrayList<PaireChaineEntier> dico = initDico(depeches, "SPORTS");
         for (PaireChaineEntier unePaire:
-                initDico(depeches, "SPORTS")) {
-            System.out.println(unePaire.getEntier());
+                dico) {
+            System.out.println(unePaire.getEntier()+" : "+unePaire.getChaine());
+        }
+
+        calculScores(depeches, "SPORTS", dico);
+        System.out.println("Dico après CalculScore : ");
+        for (PaireChaineEntier unePaire:
+                dico) {
+            System.out.println(unePaire.getEntier()+" : "+unePaire.getChaine());
         }
     }
 
