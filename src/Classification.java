@@ -182,7 +182,7 @@ public class Classification {
     public static void main(String[] args) {
         //Chargement des dépêches en mémoire
         System.out.println("chargement des dépêches");
-        ArrayList<Depeche> depeches = lectureDepeches("./test.txt");
+        ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
 
         // Variables
         Scanner lecteur = new Scanner(System.in);
