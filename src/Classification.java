@@ -160,13 +160,14 @@ public class Classification {
 
         try {
             FileWriter file = new FileWriter(nomFichier);
-            for (PaireChaineEntier unePaire:
-                    dico) {
-
-                if (i<dico.size()-1) {
-                    file.write(unePaire.getChaine()+":"+poidsPourScore(unePaire.getEntier())+"\n");
-                } else {
-                    file.write(unePaire.getChaine() + ":" + poidsPourScore(unePaire.getEntier()));
+            for (PaireChaineEntier unePaire : dico) {
+                String chaine = unePaire.getChaine();
+                if (!chaine.matches("^\\p{Punct}+$")) {
+                    if (i < dico.size() - 1) {
+                        file.write(chaine + ":" + poidsPourScore(unePaire.getEntier()) + "\n");
+                    } else {
+                        file.write(chaine + ":" + poidsPourScore(unePaire.getEntier()));
+                    }
                 }
                 i++;
             }
