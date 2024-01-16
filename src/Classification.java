@@ -85,14 +85,14 @@ public class Classification {
                 file.write(depeches.get(i).getId()+" : "+catCourante+"\n");
             }
 
-            file.write("ENVIRONNEMENT-SCIENCE: "+envs+"%\n");
-            file.write("CULTURE: "+culture+"%\n");
-            file.write("ECONOMIE: "+eco+"%\n");
-            file.write("POLITIQUE: "+politique+"%\n");
-            file.write("SPORTS: "+sport+"%\n");
+            file.write("ENVIRONNEMENT-SCIENCE: "+envs*100/3+"%\n");
+            file.write("CULTURE: "+culture*100/3+"%\n");
+            file.write("ECONOMIE: "+eco*100/2+"%\n");
+            file.write("POLITIQUE: "+politique*100/11+"%\n");
+            file.write("SPORTS: "+sport*100/3+"%\n");
 
 
-            file.write("MOYENNE: "+(envs+culture+eco+politique+sport)/5+"%");
+            file.write("MOYENNE: "+((envs*100/3)+(culture*100/3)+(eco*100/2)+(politique*100/11)+(sport*100/3))/5+"%");
             file.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -182,22 +182,22 @@ public class Classification {
     public static void main(String[] args) {
         //Chargement des dépêches en mémoire
         System.out.println("chargement des dépêches");
-        ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
+        ArrayList<Depeche> depeches = lectureDepeches("./lemondejournal.txt");
 
         // Variables
         Scanner lecteur = new Scanner(System.in);
 
         // Catégorie
         Categorie culture = new Categorie("Culture");
-        culture.initLexique("./cultureResult.txt");
+        culture.initLexique("./culture.txt");
         Categorie economie = new Categorie("Economie");
-        economie.initLexique("./ecoResult.txt");
+        economie.initLexique("./economie.txt");
         Categorie politique = new Categorie("Politique");
-        politique.initLexique("./politiqueResult.txt");
+        politique.initLexique("./politique.txt");
         Categorie environnementScience = new Categorie("Environnement-Sciences");
-        environnementScience.initLexique("./envsResult.txt");
+        environnementScience.initLexique("./environnement-sciences.txt");
         Categorie sport = new Categorie("Sport");
-        sport.initLexique("./sportResult.txt");
+        sport.initLexique("./sports.txt");
 
 //        System.out.println(culture.getLexique());
 //        for (int i = 0; i < depeches.size(); i++) {
@@ -207,12 +207,12 @@ public class Classification {
 //        String saisie = lecteur.nextLine();
 //        System.out.println(UtilitairePaireChaineEntier.entierPourChaine(culture.getLexique(), saisie));
 
-        System.out.println(depeches.get(403-1).getContenu());
-        System.out.println("score dans culture : "+culture.score(depeches.get(403-1)));
-        System.out.println("score dans economie : "+economie.score(depeches.get(403-1)));
-        System.out.println("score dans politique : "+politique.score(depeches.get(403-1)));
-        System.out.println("score dans environnementScience : "+environnementScience.score(depeches.get(403-1)));
-        System.out.println("score dans sport : "+sport.score(depeches.get(403-1)));
+        System.out.println(depeches.get(2-1).getContenu());
+        System.out.println("score dans culture : "+culture.score(depeches.get(2-1)));
+        System.out.println("score dans economie : "+economie.score(depeches.get(2-1)));
+        System.out.println("score dans politique : "+politique.score(depeches.get(2-1)));
+        System.out.println("score dans environnementScience : "+environnementScience.score(depeches.get(2-1)));
+        System.out.println("score dans sport : "+sport.score(depeches.get(2-1)));
 
 
         ArrayList<Categorie> vCategorie = new ArrayList<>();
@@ -224,7 +224,7 @@ public class Classification {
 
         ArrayList<PaireChaineEntier> score = new ArrayList<>();
         for(Categorie uneCategorie : vCategorie){
-            score.add(new PaireChaineEntier(uneCategorie.getNom(), uneCategorie.score(depeches.get(403-1))));
+            score.add(new PaireChaineEntier(uneCategorie.getNom(), uneCategorie.score(depeches.get(2-1))));
         }
         System.out.println(UtilitairePaireChaineEntier.chaineMax(score));
 

@@ -1,0 +1,104 @@
+.N 001
+.D 160124
+.C POLITIQUE
+.T La ministre de l’éducation nationale a été sifflée à son arrivée et à sa sortie à l’école publique Littré, d’où elle avait retiré son fils aîné pour le mettre dans le privé. « Fais comme tes enfants, retourne dans le privé », lui a lancé un des manifestants, selon l’AFP.
+
+.N 002
+.D 160124
+.C ENVIRONNEMENT-SCIENCES
+.T 678 000 bébés sont nés l’an dernier, soit 6,6 % de moins qu’en 2022, et presque 20 % de moins qu’en 2010, selon le bilan annuel de l’Insee. Le solde naturel est à son plus bas depuis 1945. Après la crise sanitaire, l’espérance de vie repart à la hausse et renforce la part des plus âgés au sein de la population.
+
+.N 003
+.D 160124
+.C POLITIQUE
+.T Le secrétaire d’Etat américain, Antony Blinken, a promis mardi le maintien du soutien américain à l’Ukraine, après une rencontre lors du Forum économique mondial avec le président, Volodymyr Zelensky.
+
+.N 004
+.D 160124
+.C POLITIQUE
+.T L’ancien président a obtenu 51 % des voix, contre 21,2 % pour Ron DeSantis et 19,1 % pour Nikki Haley. Si l’Iowa ne représente que 40 délégués dans la course à l’investiture, l’Etat donne traditionnellement le ton de la période électorale qui s’ouvre.
+
+.N 005
+.D 160124
+.C ENVIRONNEMENT-SCIENCES
+.T Le cyclone Belal se déplace vers l’est à une vitesse d’environ 15 km/h. Le gouvernement a ordonné à tous les habitants de rester chez eux.
+
+.N 006
+.D 160124
+.C ECONOMIE
+.T Chiffres manipulés, labels douteux, « compensation » hypothétique… Comment distinguer le vrai du faux dans les promesses des marques ?
+
+.N 007
+.D 160124
+.C POLITIQUE
+.T Dans le nord de Gaza, cette phase touche à sa fin », a déclaré, lundi soir, le ministre de la défense israélien, Yoav Gallant ; à l’heure où l’administration du Hamas chiffre à plus de 24 200 morts le bilan de cette guerre, qui se propage toujours dans la région.
+
+.N 008
+.D 160124
+.C POLITIQUE
+.T Depuis les massacres du 7 octobre 2023, l’Allemagne a connu une recrudescence d’actes antisémites. Le soutien inconditionnel des autorités à l’Etat hébreu rassure ou agace les nombreux Israéliens installés dans la capitale allemande.
+
+.N 009
+.D 160124
+.C POLITIQUE
+.T Les premiers rendez-vous entre le nouveau premier ministre et les partenaires sociaux ont été décalés. Une méthode « très brouillonne », fustige la secrétaire générale de la CGT, Sophie Binet.
+
+.N 010
+.D 160124
+.C POLITIQUE
+.T Le jeune homme, victime d’un coup de matraque de la police lors d’un contrôle d’identité en 2017 qui l’a laissé infirme, a détaillé le calvaire qu’il vit depuis.
+
+.N 011
+.D 160124
+.C ENVIRONNEMENT-SCIENCES
+.T Météo-France a par ailleurs prévu pour mercredi une vigilance orange neige-verglas sur trente-quatre départements du tiers nord-est, et a placé deux autres départements de l’ouest du pays en vigilance orange pluie-inondation.
+
+.N 012
+.D 160124
+.C SPORTS
+.T Le Français s’est incliné en trois sets face à l’Espagnol, au premier tour, mardi 16 janvier, à Melbourne. Gasquet a tenu tête au numéro 2 mondial lors du premier set, avant de céder physiquement.
+
+.N 013
+.D 160124
+.C POLITIQUE
+.T Gouvernement à droite, nomination de Rachida Dati, loi « immigration »… Le chef de l’Etat n’a exprimé aucun regret, lundi, devant les parlementaires de son camp, qu’il a reçus à l’Elysée. François Bayrou et Edouard Philippe étaient absents.
+
+.N 014
+.D 160124
+.C ECONOMIE
+.T Leur nombre a atteint 3,1 millions en France en 2023, selon une étude de l’Insee publiée mardi 16 janvier.
+
+.N 015
+.D 160124
+.C POLITIQUE
+.T La réforme du brevet voulue par l’ancien ministre de l’éducation Attal ferait du collège une propédeutique au lycée, observe, dans une tribune au « Monde », l’historien Claude Lelièvre. Il relève que la politique éducative « est désormais loin de l’horizon d’un certain libéralisme “avancé” ».
+
+.N 016
+.D 160124
+.C SPORTS
+.T Selon les informations du « Monde », l’UNFP a déposé une plainte contre X, mardi, notamment pour « extorsion » et « harcèlement moral » afin de faire cesser la mise à l’écart des joueurs, courante dans les clubs français.
+
+.N 017
+.D 160124
+.C POLITIQUE
+.T L’île de Nauru, située dans le Pacifique, a annoncé lundi qu’elle renonçait à la reconnaissance diplomatique de Taïwan au profit de la Chine. Une décision « décevante », selon les Etats-Unis.
+
+.N 018
+.D 160124
+.C SPORTS
+.T Appel à témoignages : vous avez décidé de quitter la région parisienne pendant les Jeux olympiques, racontez-nous.Que vous soyez sûr de partir, que vous projetiez un départ ou que vous vouliez mais ne pouvez pas, votre témoignage nous intéresse.
+
+.N 019
+.D 240124
+.C CULTURE
+.T Depuis début janvier, les trois enfants de la star se mènent une guerre fratricide en jurant chacun défendre au mieux les intérêts de leur père.
+
+.N 020
+.D 240124
+.C CULTURE
+.T Cinéma : La nouvelle adaptation de la franchise au lézard géant, qui se déroule dans le Japon d'après-guerre et a notamment cartonné sur le territoire américain, est une réussite tant sur le fond que la forme. Le film ressort mercredi 17 janvier pour deux semaines dans les salles françaises.
+
+.N 021
+.D 240124
+.C CULTURE
+.T "Alain Delon est lucide, contrairement à ce qu'avancent ses fils, et n'est diminué que physiquement", déclare l'avocat de l'acteur Christophe Ayela dans un entretien publié lundi dans "Le Parisien".
