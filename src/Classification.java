@@ -156,18 +156,21 @@ public class Classification {
     public static void generationLexique(ArrayList<Depeche> depeches, String categorie, String nomFichier) {
         ArrayList<PaireChaineEntier> dico = initDico(depeches, categorie);
         calculScores(depeches, categorie, dico);
+        UtilitairePaireChaineEntier.tri_bulle_ameliore(dico);
         int i = 0;
 
         try {
             FileWriter file = new FileWriter(nomFichier);
             for (PaireChaineEntier unePaire : dico) {
-                String chaine = unePaire.getChaine();
-                chaine = chaine.replace(":", "");
-                if (!chaine.matches("^\\p{Punct}+$")) {
-                    if (i < dico.size() - 1) {
-                        file.write(chaine + ":" + poidsPourScore(unePaire.getEntier()) + "\n");
-                    } else {
-                        file.write(chaine + ":" + poidsPourScore(unePaire.getEntier()));
+                if (unePaire.getEntier() > 0) {
+                    String chaine = unePaire.getChaine();
+                    chaine = chaine.replace(":", "");
+                    if (!chaine.matches("^\\p{Punct}+$")) {
+                        if (i < dico.size() - 1) {
+                            file.write(chaine + ":" + poidsPourScore(unePaire.getEntier()) + "\n");
+                        } else {
+                            file.write(chaine + ":" + poidsPourScore(unePaire.getEntier()));
+                        }
                     }
                 }
                 i++;
@@ -176,6 +179,18 @@ public class Classification {
             file.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void insereTrie(ArrayList<PaireChaineEntier> result, PaireChaineEntier ligne) {
+        if (result.isEmpty()) {
+            result.add(ligne);
+        } else {
+            int i = 0;
+            while (i < result.size() && result.get(i).getEntier() < ligne.getEntier()) {
+                i++;
+            }
+            result.add(i, ligne);
         }
     }
 
@@ -228,6 +243,8 @@ public class Classification {
         }
         System.out.println(UtilitairePaireChaineEntier.chaineMax(score));
 
+        long startTime = System.currentTimeMillis(); //Debut du chrono
+
         Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
 
         generationLexique(depeches, "ENVIRONNEMENT-SCIENCES", "./envsResult.txt");
@@ -235,6 +252,10 @@ public class Classification {
         generationLexique(depeches, "ECONOMIE", "./ecoResult.txt");
         generationLexique(depeches, "POLITIQUE", "./politiqueResult.txt");
         generationLexique(depeches, "SPORTS", "./sportResult.txt");
+
+
+        long endTime = System.currentTimeMillis(); // Fin du chrono
+        System.out.println("la classification automatique a été réalisée en : " + (endTime-startTime) + "ms");
 
     }
 

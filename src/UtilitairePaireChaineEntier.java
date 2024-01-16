@@ -53,4 +53,21 @@ public class UtilitairePaireChaineEntier {
         return moyenne / listePaires.size();
     }
 
+    public static void tri_bulle_ameliore(ArrayList<PaireChaineEntier> listePaires) {
+        int n = listePaires.size();
+        boolean ech = true;
+        while (ech) {
+            ech = false;
+            for (int i = 0; i < n - 1; i++) {
+                if (listePaires.get(i).getEntier() < listePaires.get(i + 1).getEntier()) {
+                    ech = true;
+                    PaireChaineEntier tmp = listePaires.get(i);
+                    listePaires.set(i, listePaires.get(i + 1));
+                    listePaires.set(i + 1, tmp);
+                }
+            }
+            n--;
+        }
+    }
+
 }
