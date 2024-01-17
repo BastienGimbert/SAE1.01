@@ -36,8 +36,6 @@ public class Categorie {
                 String[] ligne = scanner.nextLine().split(":");
                 String mot = ligne[0];
                 int force = Integer.parseInt(ligne[1]);
-                System.out.println("mot = "+mot);
-                System.out.println("force = "+force);
                 this.lexique.add(new PaireChaineEntier(mot, force));
                 i++;
             }
@@ -46,7 +44,6 @@ public class Categorie {
             e.printStackTrace();
         }
     }
-
 
     //calcul du score d'une dépêche pour la catégorie
     public int score(Depeche d) {

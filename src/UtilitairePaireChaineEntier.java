@@ -3,16 +3,43 @@ import java.util.ArrayList;
 public class UtilitairePaireChaineEntier {
 
 
-    public static int indicePourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
-        int i = 0;
+//    public static int indicePourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
+//        int i = 0;
+//
+//        while (i < listePaires.size() && !listePaires.get(i).getChaine().equals(chaine)) {
+//            i++;
+//        }
+//        if (i == listePaires.size()) {
+//            return -1;
+//        } else {
+//            return i;
+//        }
+//
+//    }
 
-        while (i < listePaires.size() && !listePaires.get(i).getChaine().equals(chaine)) {
-            i++;
-        }
-        if (i == listePaires.size()) {
+    public static int indicePourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
+        if (listePaires.isEmpty() || listePaires.get(listePaires.size()-1).getChaine().compareTo(chaine)<0) {
             return -1;
         } else {
-            return i;
+            int inf = 0;
+            int sup = listePaires.size()-1;
+            int m;
+
+            while (inf < sup) {
+                m = (inf+sup) / 2;
+                if (listePaires.get(m).getChaine().compareTo(chaine)>=0) {
+                    sup = m;
+                } else {
+                    inf = m + 1;
+                }
+            }
+
+            if (listePaires.get(inf).getChaine().equals(chaine)) {
+                return inf;
+            } else {
+                return -1;
+            }
+
         }
 
     }

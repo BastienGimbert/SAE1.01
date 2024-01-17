@@ -121,23 +121,32 @@ public class Classification {
             i++;
         }
 
-//        for (Depeche uneDep:
-//             depeches) {
-//            if (uneDep.getCategorie().equals(categorie)) {
-//                ArrayList<String> mots = uneDep.getMots();
-//                for (String mot:
-//                     mots) {
-//                    int indCour = UtilitairePaireChaineEntier.indicePourChaine(resultat, mot);
-//                    if (indCour==-1) {
-//                        resultat.add(new PaireChaineEntier(mot, 0));
-//                    } else {
-//                        resultat.get(indCour).setEntier(resultat.get(indCour).getEntier()+1);
-//                    }
-//                }
-//            }
-//        }
+
         return resultat;
 
+    }
+
+    public static ArrayList<PaireChaineEntier> initDicho(ArrayList<Depeche> depeches, String categorie) {
+        ArrayList<PaireChaineEntier> resultat = new ArrayList<>();
+        int i = 0;
+        while (!depeches.get(i).getCategorie().equals(categorie)) {
+            i++;
+        }
+        while (i < depeches.size() && depeches.get(i).getCategorie().equals(categorie)) {
+            ArrayList<String> mots = depeches.get(i).getMots();
+            for (String mot:
+                    mots) {
+                int indCour = UtilitairePaireChaineEntier.indicePourChaine(resultat, mot);
+                if (indCour==-1) {
+                    resultat.add(new PaireChaineEntier(mot, 0));
+                } else {
+                    resultat.get(indCour).setEntier(resultat.get(indCour).getEntier()+1);
+                }
+            }
+            i++;
+        }
+
+        return resultat;
     }
 
     public static void calculScores(ArrayList<Depeche> depeches, String categorie, ArrayList<PaireChaineEntier> dictionnaire) {
@@ -199,21 +208,9 @@ public class Classification {
         }
     }
 
-    public static void insereTrie(ArrayList<PaireChaineEntier> result, PaireChaineEntier ligne) {
-        if (result.isEmpty()) {
-            result.add(ligne);
-        } else {
-            int i = 0;
-            while (i < result.size() && result.get(i).getEntier() < ligne.getEntier()) {
-                i++;
-            }
-            result.add(i, ligne);
-        }
-    }
-
     public static void main(String[] args) {
         //Chargement des dépêches en mémoire
-        System.out.println("chargement des dépêches");
+//        System.out.println("chargement des dépêches");
         ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
 
         // Variables
@@ -239,12 +236,12 @@ public class Classification {
 //        String saisie = lecteur.nextLine();
 //        System.out.println(UtilitairePaireChaineEntier.entierPourChaine(culture.getLexique(), saisie));
 
-        System.out.println(depeches.get(403-1).getContenu());
-        System.out.println("score dans culture : "+culture.score(depeches.get(403-1)));
-        System.out.println("score dans economie : "+economie.score(depeches.get(403-1)));
-        System.out.println("score dans politique : "+politique.score(depeches.get(403-1)));
-        System.out.println("score dans environnementScience : "+environnementScience.score(depeches.get(403-1)));
-        System.out.println("score dans sport : "+sport.score(depeches.get(403-1)));
+//        System.out.println(depeches.get(403-1).getContenu());
+//        System.out.println("score dans culture : "+culture.score(depeches.get(403-1)));
+//        System.out.println("score dans economie : "+economie.score(depeches.get(403-1)));
+//        System.out.println("score dans politique : "+politique.score(depeches.get(403-1)));
+//        System.out.println("score dans environnementScience : "+environnementScience.score(depeches.get(403-1)));
+//        System.out.println("score dans sport : "+sport.score(depeches.get(403-1)));
 
 
         ArrayList<Categorie> vCategorie = new ArrayList<>();
@@ -258,11 +255,13 @@ public class Classification {
         for(Categorie uneCategorie : vCategorie){
             score.add(new PaireChaineEntier(uneCategorie.getNom(), uneCategorie.score(depeches.get(403-1))));
         }
-        System.out.println(UtilitairePaireChaineEntier.chaineMax(score));
+//        System.out.println(UtilitairePaireChaineEntier.chaineMax(score));
 
+
+
+        Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
 
         long startTime = System.currentTimeMillis(); // Début du chrono
-        Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
 
         generationLexique(depeches, "ENVIRONNEMENT-SCIENCES", "./envsResult.txt");
         generationLexique(depeches, "CULTURE", "./cultureResult.txt");
