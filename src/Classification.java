@@ -2,6 +2,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Classification {
@@ -189,13 +190,9 @@ public class Classification {
     }
 
     public static void main(String[] args) {
-        //Chargement des dépêches en mémoire
-//        System.out.println("chargement des dépêches");
         long startTime = System.currentTimeMillis(); // Début du chrono
         ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
 
-        // Variables
-        Scanner lecteur = new Scanner(System.in);
 
         // Catégorie
         Categorie culture = new Categorie("Culture");
@@ -209,37 +206,10 @@ public class Classification {
         Categorie sport = new Categorie("Sport");
         sport.initLexique("./sportResult.txt");
 
-//        System.out.println(culture.getLexique());
-//        for (int i = 0; i < depeches.size(); i++) {
-//            depeches.get(i).afficher();
-//        }
-//        System.out.println("Donnez un mot : ");
-//        String saisie = lecteur.nextLine();
-//        System.out.println(UtilitairePaireChaineEntier.entierPourChaine(culture.getLexique(), saisie));
+        ArrayList<Categorie> vCategorie = new ArrayList<>(Arrays.asList(culture, economie, politique, environnementScience, sport));
 
-//        System.out.println(depeches.get(403-1).getContenu());
-//        System.out.println("score dans culture : "+culture.score(depeches.get(403-1)));
-//        System.out.println("score dans economie : "+economie.score(depeches.get(403-1)));
-//        System.out.println("score dans politique : "+politique.score(depeches.get(403-1)));
-//        System.out.println("score dans environnementScience : "+environnementScience.score(depeches.get(403-1)));
-//        System.out.println("score dans sport : "+sport.score(depeches.get(403-1)));
-
-
-        ArrayList<Categorie> vCategorie = new ArrayList<>();
-        vCategorie.add(culture);
-        vCategorie.add(economie);
-        vCategorie.add(politique);
-        vCategorie.add(environnementScience);
-        vCategorie.add(sport);
-
-//        ArrayList<PaireChaineEntier> score = new ArrayList<>();
-//        for(Categorie uneCategorie : vCategorie){
-//            score.add(new PaireChaineEntier(uneCategorie.getNom(), uneCategorie.score(depeches.get(403-1))));
-//        }
-//        System.out.println(UtilitairePaireChaineEntier.chaineMax(score));
 
         Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
-
         generationLexique(depeches, "ENVIRONNEMENT-SCIENCES", "./envsResult.txt");
         generationLexique(depeches, "CULTURE", "./cultureResult.txt");
         generationLexique(depeches, "ECONOMIE", "./ecoResult.txt");
