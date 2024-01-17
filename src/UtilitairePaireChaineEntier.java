@@ -59,7 +59,7 @@ public class UtilitairePaireChaineEntier {
         while (ech) {
             ech = false;
             for (int i = 0; i < n - 1; i++) {
-                if (listePaires.get(i).getEntier() < listePaires.get(i + 1).getEntier()) {
+                if (listePaires.get(i).getChaine().compareTo(listePaires.get(i + 1).getChaine())>0) {
                     ech = true;
                     PaireChaineEntier tmp = listePaires.get(i);
                     listePaires.set(i, listePaires.get(i + 1));
