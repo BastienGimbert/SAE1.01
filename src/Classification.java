@@ -61,19 +61,29 @@ public class Classification {
 
                 switch (catCourante) {
                     case "Environnement-Sciences":
-                        envs++;
+                        if (depeches.get(i).getCategorie().equalsIgnoreCase("Environnement-Sciences")) {
+                            envs++;
+                        }
                         break;
                     case "Culture":
-                        culture++;
+                        if (depeches.get(i).getCategorie().equalsIgnoreCase("Culture")) {
+                            culture++;
+                        }
                         break;
                     case "Economie":
-                        eco++;
+                        if (depeches.get(i).getCategorie().equalsIgnoreCase("Economie")) {
+                            eco++;
+                        }
                         break;
                     case "Politique":
-                        politique++;
+                        if (depeches.get(i).getCategorie().equalsIgnoreCase("Politique")) {
+                            politique++;
+                        }
                         break;
                     case "Sport":
-                        sport++;
+                        if (depeches.get(i).getCategorie().equalsIgnoreCase("Sports")) {
+                            sport++;
+                        }
                         break;
                 }
 
