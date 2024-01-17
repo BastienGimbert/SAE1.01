@@ -1,0 +1,27 @@
+001 : Politique
+002 : Environnement-Sciences
+003 : Politique
+004 : Politique
+005 : Politique
+006 : Politique
+007 : Politique
+008 : Politique
+009 : Politique
+010 : Politique
+011 : Culture
+012 : Sport
+013 : Politique
+014 : Culture
+015 : Politique
+016 : Politique
+017 : Politique
+018 : Politique
+019 : Culture
+020 : Culture
+021 : Culture
+ENVIRONNEMENT-SCIENCE: 33%
+CULTURE: 100%
+ECONOMIE: 0%
+POLITIQUE: 100%
+SPORTS: 33%
+MOYENNE: 51%

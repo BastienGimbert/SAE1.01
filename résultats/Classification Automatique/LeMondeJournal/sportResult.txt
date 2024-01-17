@@ -1,0 +1,16 @@
+avant:1
+céder:1
+face:1
+français:1
+gasquet:1
+incliné:1
+l’espagnol:1
+melbourne:1
+numéro:1
+premier:1
+set:1
+sets:1
+s’est:1
+tenu:1
+tour:1
+tête:1

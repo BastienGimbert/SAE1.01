@@ -1,0 +1,12 @@
+chiffres:1
+comment:1
+compensation:1
+distinguer:1
+douteux:1
+faux:1
+hypothétique…:1
+labels:1
+manipulés:1
+marques:1
+promesses:1
+vrai:1
