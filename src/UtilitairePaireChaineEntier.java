@@ -6,7 +6,7 @@ public class UtilitairePaireChaineEntier {
 //    public static int indicePourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
 //        int i = 0;
 //
-//        while (i < listePaires.size() && !listePaires.get(i).getChaine().equals(chaine)) {
+//        while (i < listePaires.size() && !listePaires.get(i).getChaine().equalsIgnoreCase(chaine)) {
 //            i++;
 //        }
 //        if (i == listePaires.size()) {
@@ -18,6 +18,7 @@ public class UtilitairePaireChaineEntier {
 //    }
 
     public static int indicePourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
+
         if (listePaires.isEmpty() || listePaires.get(listePaires.size()-1).getChaine().compareTo(chaine)<0) {
             return -1;
         } else {
@@ -41,12 +42,11 @@ public class UtilitairePaireChaineEntier {
             }
 
         }
-
     }
 
     public static int entierPourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
         int i = 0;
-        while (i < listePaires.size() && !listePaires.get(i).getChaine().equals(chaine)) {
+        while (i < listePaires.size() && !listePaires.get(i).getChaine().equalsIgnoreCase(chaine)) {
             i++;
         }
         if (i < listePaires.size()) {
