@@ -9,29 +9,33 @@ public class Classification {
 
 
     private static ArrayList<Depeche> lectureDepeches(String nomFichier) {
-        //creation d'un tableau de dépêches
         ArrayList<Depeche> depeches = new ArrayList<>();
         try {
-            // lecture du fichier d'entrée
             FileInputStream file = new FileInputStream(nomFichier);
             Scanner scanner = new Scanner(file);
 
             while (scanner.hasNextLine()) {
                 String ligne = scanner.nextLine();
+                if (!ligne.startsWith(".N")) continue;
                 String id = ligne.substring(3);
+
                 ligne = scanner.nextLine();
                 String date = ligne.substring(3);
+
                 ligne = scanner.nextLine();
                 String categorie = ligne.substring(3);
-                ligne = scanner.nextLine();
-                String lignes = ligne.substring(3);
-                while (scanner.hasNextLine() && !ligne.equalsIgnoreCase("")) {
+
+                StringBuilder lignes = new StringBuilder();
+                while (scanner.hasNextLine()) {
                     ligne = scanner.nextLine();
-                    if (!ligne.equalsIgnoreCase("")) {
-                        lignes = lignes + '\n' + ligne;
+                    if (ligne.startsWith(".N")) {
+                        scanner.nextLine();
+                        break;
                     }
+                    lignes.append(ligne).append('\n');
                 }
-                Depeche uneDepeche = new Depeche(id, date, categorie, lignes);
+
+                Depeche uneDepeche = new Depeche(id, date, categorie, lignes.toString());
                 depeches.add(uneDepeche);
             }
             scanner.close();
@@ -40,6 +44,7 @@ public class Classification {
         }
         return depeches;
     }
+
 
 
     public static void classementDepeches(ArrayList<Depeche> depeches, ArrayList<Categorie> categories, String nomFichier) {
@@ -192,7 +197,7 @@ public class Classification {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis(); // Début du chrono
         ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
-
+        // Lexique
         generationLexique(depeches, "ENVIRONNEMENT-SCIENCES", "./envsResult.txt");
         generationLexique(depeches, "CULTURE", "./cultureResult.txt");
         generationLexique(depeches, "ECONOMIE", "./ecoResult.txt");
@@ -211,6 +216,7 @@ public class Classification {
         Categorie sport = new Categorie("Sport");
         sport.initLexique("./sportResult.txt");
 
+        // Résultats
         ArrayList<Categorie> vCategorie = new ArrayList<>(Arrays.asList(culture, economie, politique, environnementScience, sport));
         Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
 
