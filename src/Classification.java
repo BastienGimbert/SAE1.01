@@ -194,6 +194,13 @@ public class Classification {
         ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
 
 
+
+        generationLexique(depeches, "ENVIRONNEMENT-SCIENCES", "./envsResult.txt");
+        generationLexique(depeches, "CULTURE", "./cultureResult.txt");
+        generationLexique(depeches, "ECONOMIE", "./ecoResult.txt");
+        generationLexique(depeches, "POLITIQUE", "./politiqueResult.txt");
+        generationLexique(depeches, "SPORTS", "./sportResult.txt");
+
         // Catégorie
         Categorie culture = new Categorie("Culture");
         culture.initLexique("./cultureResult.txt");
@@ -207,14 +214,8 @@ public class Classification {
         sport.initLexique("./sportResult.txt");
 
         ArrayList<Categorie> vCategorie = new ArrayList<>(Arrays.asList(culture, economie, politique, environnementScience, sport));
-
-
         Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
-        generationLexique(depeches, "ENVIRONNEMENT-SCIENCES", "./envsResult.txt");
-        generationLexique(depeches, "CULTURE", "./cultureResult.txt");
-        generationLexique(depeches, "ECONOMIE", "./ecoResult.txt");
-        generationLexique(depeches, "POLITIQUE", "./politiqueResult.txt");
-        generationLexique(depeches, "SPORTS", "./sportResult.txt");
+
 
 
         long endTime = System.currentTimeMillis(); // Fin du chrono

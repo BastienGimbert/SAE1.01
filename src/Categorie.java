@@ -47,10 +47,10 @@ public class Categorie {
 
     //calcul du score d'une dépêche pour la catégorie
     public int score(Depeche d) {
-        String[] dep = d.getContenu().split("[,;:.'!? \\n]");
+        ArrayList<String> dep = d.getMots();
         int total = 0;
-        for (int i = 0; i < dep.length; i++) {
-            total += UtilitairePaireChaineEntier.entierPourChaine(this.lexique, dep[i]);
+        for (int i = 0; i < dep.size(); i++) {
+            total += UtilitairePaireChaineEntier.entierPourChaine(this.lexique, dep.get(i));
         }
         return total;
     }
