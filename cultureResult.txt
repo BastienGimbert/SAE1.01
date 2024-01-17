@@ -203,7 +203,6 @@ danse:3
 danser:1
 de:1
 de:1
-de:1
 defonseca:1
 delta:1
 descendances:1
@@ -225,7 +224,6 @@ donnent:1
 douce:1
 doutes:1
 dresde:1
-du:1
 dubaï:1
 dubois:1
 duchamp:1
@@ -253,7 +251,6 @@ eldorado:1
 elysées:1
 emi:1
 emmanuelle:1
-en:1
 enchères:1
 enfoui:1
 enregistrements:1
@@ -262,6 +259,7 @@ entrecroisent:1
 envoler:1
 essayer:1
 estimation:1
+et:1
 européenne:1
 eurydice:1
 excentrique:1
@@ -274,7 +272,7 @@ expressive:1
 fantasmagorique:1
 fauve:1
 fer:1
-festival:2
+festival:1
 festivals:1
 ficelles:1
 figurera:1
@@ -328,6 +326,7 @@ grasso:1
 green:1
 gros:1
 group:1
+guerre:1
 guggenheim:1
 guitariste:1
 habituellement:1
@@ -402,26 +401,19 @@ keith:1
 kitsch:1
 kitsou:1
 krens:1
-l:1
-l:1
-la:1
-la:1
-la:1
-la:1
 la:1
 lambert-wild:1
 lamine:1
 lance:1
 le:1
 le:1
+le:1
 lear:1
 leblanc:1
 lecteurs:1
-les:1
 lesquels:1
 lisez:1
 littérature:1
-livre:1
 logements:1
 loger:1
 londres:1
@@ -438,7 +430,6 @@ m/m:1
 m6:1
 madame:1
 madeleine:1
-madrid:1
 magie:1
 magnifique:1
 magritte:1
@@ -500,7 +491,7 @@ musée:3
 mutations:1
 méchant:1
 méconnus:1
-mécénat:2
+mécénat:1
 médicis:1
 méditation:1
 mélange:1
@@ -539,7 +530,6 @@ pair:1
 palais:1
 pantin:1
 paranoïas:1
-paris:1
 parmi:1
 parraine:1
 part:1
@@ -733,7 +723,6 @@ troupe:1
 tussaud:1
 tyner:1
 ténor:1
-un:1
 unanimité:1
 universitaires:1
 univoque:1

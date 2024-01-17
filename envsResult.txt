@@ -9,7 +9,6 @@
 341:1
 8:1
 810:1
-a:1
 abaisser:1
 abandonné:1
 abattage:1
@@ -78,6 +77,7 @@ arctique:1
 artemis:1
 asie:1
 assistance:1
+associations:1
 astronautes:1
 astronome:1
 atlantis:1
@@ -90,7 +90,6 @@ augmentent:1
 augmenté:1
 auraient:1
 australes:1
-australie:1
 australien:1
 autocicatrisants:1
 automédication:1
@@ -131,6 +130,7 @@ brosses:1
 brésilienne:1
 brûlis:1
 bush:1
+bâtiment:1
 béton:1
 cadres:1
 canadienne:1
@@ -166,7 +166,7 @@ chercheurs:2
 chevaux:1
 cheveux:1
 chiens:1
-chikungunya:2
+chikungunya:1
 chikv:1
 chimie:1
 chimiques:1
@@ -243,20 +243,10 @@ cultures:1
 cérébraux:1
 damnés:1
 dangers:1
-de:3
-de:1
-de:1
-de:1
-de:1
-de:1
-de:1
-de:1
 delaisi:1
 demandes:1
 dents:1
 dernières:1
-des:1
-des:1
 destruction:1
 destructions:1
 devenus:1
@@ -322,8 +312,6 @@ effet:2
 efficacité:1
 embauche:1
 emergency:1
-en:1
-en:1
 encourager:1
 enfin:1
 engager:1
@@ -395,7 +383,7 @@ fumée:1
 futur:1
 gard:1
 garder:1
-gaz:2
+gaz:1
 gazeuses:1
 geneviève:1
 gers:1
@@ -464,7 +452,7 @@ insectes:1
 inserm:1
 institut:1
 intempéries:1
-internationale:2
+internationale:1
 interview:1
 introduire:1
 intéresser:1
@@ -481,9 +469,6 @@ jupiter:1
 km2:1
 koïchiro:1
 l:1
-l:1
-l:1
-la:1
 la:1
 laboratoires:1
 lactée:1
@@ -492,10 +477,6 @@ lancé:1
 lancée:1
 lançant:1
 lascaux:1
-le:1
-le:1
-le:1
-le:1
 le:1
 lecture:1
 les:1
@@ -550,7 +531,7 @@ micro-organismes:1
 milieux:1
 militaires:1
 milliardième:1
-ministère:2
+ministère:1
 miroslav:1
 missile:1
 misé:1
@@ -590,7 +571,7 @@ nanomètre:1
 nanoparticules:1
 nasa:1
 naturelle:1
-navette:2
+navette:1
 navires-citernes:1
 neptune:1
 nettoyage:1
@@ -612,9 +593,10 @@ office:1
 officiel:1
 officiellement:1
 officine:1
-ogm:2
+ogm:1
 olonne:1
 oms:1
+ont:1
 orange:1
 orbite:1
 ordonnances:1
@@ -676,8 +658,6 @@ positifs:1
 poubelle:1
 poudres:1
 poumon:1
-pour:1
-poursuivi:1
 pratique:1
 pratiques:1
 prendra:1
@@ -688,7 +668,7 @@ prisonnier:1
 probablement:1
 proche:1
 procréation:1
-producteurs:2
+producteurs:1
 produites:1
 progrès:1
 projets:1
@@ -780,11 +760,11 @@ résistantes:1
 résurgence:1
 révolution:1
 sables-d:1
-salon:2
+salon:1
 sanitaires:1
 santé:1
 sarthe:1
-satellite:2
+satellite:1
 satellite-espion:1
 satellites:1
 saturne:1
@@ -801,6 +781,7 @@ sculpture:1
 secousse:1
 secoué:1
 secouée:1
+secteur:1
 seize:1
 sel:1
 sept:1
@@ -913,6 +894,7 @@ tué:1
 tués:1
 types:1
 uisg:1
+un:1
 unesco:1
 uniquement:1
 université:1
@@ -948,7 +930,6 @@ vouées:1
 vraie:1
 végétales:1
 yonne:1
-york:1
 yorkshire:1
 yucca:1
 zones:1
@@ -980,10 +961,9 @@ zones:1
 épuisement:1
 équipé:1
 établir:1
-était:1
 étanchéité:1
 étiquetage:1
-étude:2
+étude:1
 études:1
 étudiées:1
 évidence:1

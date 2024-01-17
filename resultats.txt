@@ -38,11 +38,11 @@
 038 : Environnement-Sciences
 039 : Environnement-Sciences
 040 : Environnement-Sciences
-041 : Sport
+041 : Environnement-Sciences
 042 : Environnement-Sciences
 043 : Environnement-Sciences
 044 : Environnement-Sciences
-045 : Politique
+045 : Environnement-Sciences
 046 : Environnement-Sciences
 047 : Environnement-Sciences
 048 : Environnement-Sciences
@@ -76,7 +76,7 @@
 076 : Environnement-Sciences
 077 : Environnement-Sciences
 078 : Environnement-Sciences
-079 : Sport
+079 : Environnement-Sciences
 080 : Environnement-Sciences
 081 : Environnement-Sciences
 082 : Environnement-Sciences
@@ -98,7 +98,7 @@
 098 : Environnement-Sciences
 099 : Environnement-Sciences
 100 : Environnement-Sciences
-101 : Sport
+101 : Culture
 102 : Culture
 103 : Culture
 104 : Culture
@@ -111,7 +111,7 @@
 111 : Culture
 112 : Culture
 113 : Culture
-114 : Sport
+114 : Culture
 115 : Culture
 116 : Culture
 117 : Culture
@@ -143,8 +143,8 @@
 143 : Culture
 144 : Culture
 145 : Culture
-146 : Sport
-147 : Politique
+146 : Culture
+147 : Sport
 148 : Culture
 149 : Culture
 150 : Culture
@@ -152,14 +152,14 @@
 152 : Culture
 153 : Culture
 154 : Culture
-155 : Culture
-156 : Culture
+155 : Sport
+156 : Sport
 157 : Culture
 158 : Culture
 159 : Culture
 160 : Culture
 161 : Culture
-162 : Sport
+162 : Politique
 163 : Culture
 164 : Culture
 165 : Culture
@@ -189,9 +189,9 @@
 189 : Culture
 190 : Culture
 191 : Culture
-192 : Culture
+192 : Sport
 193 : Culture
-194 : Culture
+194 : Economie
 195 : Culture
 196 : Sport
 197 : Culture
@@ -216,7 +216,7 @@
 216 : Economie
 217 : Economie
 218 : Economie
-219 : Environnement-Sciences
+219 : Economie
 220 : Economie
 221 : Economie
 222 : Economie
@@ -235,13 +235,13 @@
 235 : Environnement-Sciences
 236 : Economie
 237 : Economie
-238 : Politique
+238 : Economie
 239 : Economie
 240 : Economie
 241 : Economie
 242 : Economie
 243 : Economie
-244 : Sport
+244 : Economie
 245 : Economie
 246 : Economie
 247 : Economie
@@ -250,8 +250,8 @@
 250 : Economie
 251 : Economie
 252 : Economie
-253 : Environnement-Sciences
-254 : Economie
+253 : Politique
+254 : Politique
 255 : Economie
 256 : Economie
 257 : Economie
@@ -280,7 +280,7 @@
 280 : Economie
 281 : Economie
 282 : Economie
-283 : Economie
+283 : Politique
 284 : Economie
 285 : Economie
 286 : Economie
@@ -344,21 +344,21 @@
 344 : Politique
 345 : Politique
 346 : Politique
-347 : Environnement-Sciences
-348 : Politique
+347 : Politique
+348 : Sport
 349 : Politique
-350 : Culture
-351 : Economie
+350 : Sport
+351 : Politique
 352 : Politique
 353 : Politique
 354 : Politique
-355 : Politique
+355 : Economie
 356 : Politique
 357 : Politique
-358 : Environnement-Sciences
+358 : Politique
 359 : Politique
 360 : Politique
-361 : Economie
+361 : Politique
 362 : Politique
 363 : Politique
 364 : Politique
@@ -373,11 +373,11 @@
 373 : Politique
 374 : Politique
 375 : Politique
-376 : Environnement-Sciences
+376 : Politique
 377 : Politique
 378 : Politique
 379 : Politique
-380 : Economie
+380 : Politique
 381 : Politique
 382 : Politique
 383 : Politique
@@ -498,9 +498,9 @@
 498 : Sport
 499 : Sport
 500 : Sport
-ENVIRONNEMENT-SCIENCE: 96%
-CULTURE: 92%
-ECONOMIE: 93%
-POLITIQUE: 92%
+ENVIRONNEMENT-SCIENCE: 99%
+CULTURE: 91%
+ECONOMIE: 94%
+POLITIQUE: 96%
 SPORTS: 100%
-MOYENNE: 94%
+MOYENNE: 96%
