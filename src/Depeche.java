@@ -33,7 +33,7 @@ public class Depeche {
         String[] tabchaine = chaine.split(" ");
         ArrayList<String> resultat = new ArrayList<String>();
         for (int i = 0; i < tabchaine.length; i++) {
-            if (!tabchaine[i].equalsIgnoreCase("") && !resultat.contains(tabchaine[i])) {
+            if (!tabchaine[i].equalsIgnoreCase("") && !resultat.contains(tabchaine[i]) && tabchaine[i].length() > 4) {
                 resultat.add(tabchaine[i]);
             }
         }

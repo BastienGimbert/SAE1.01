@@ -59,28 +59,23 @@ public class Classification {
                 }
                 String catCourante = UtilitairePaireChaineEntier.chaineMax(scoreParCat);
 
-                if (depeches.get(i).getCategorie().equalsIgnoreCase("ENVIRONNEMENT-SCIENCES")) {
-                    if (catCourante.equalsIgnoreCase("Environnement-Sciences")) {
+                switch (catCourante) {
+                    case "Environnement-Sciences":
                         envs++;
-                    }
-                } else if (depeches.get(i).getCategorie().equalsIgnoreCase("CULTURE")) {
-                    if (catCourante.equalsIgnoreCase("Culture")) {
+                        break;
+                    case "Culture":
                         culture++;
-                    }
-                } else if (depeches.get(i).getCategorie().equalsIgnoreCase("ECONOMIE")) {
-                    if (catCourante.equalsIgnoreCase("Economie")) {
+                        break;
+                    case "Economie":
                         eco++;
-                    }
-                } else if (depeches.get(i).getCategorie().equalsIgnoreCase("POLITIQUE")) {
-                    if (catCourante.equalsIgnoreCase("Politique")) {
+                        break;
+                    case "Politique":
                         politique++;
-                    }
-                } else {
-                    if (catCourante.equalsIgnoreCase("Sport")) {
+                        break;
+                    case "Sport":
                         sport++;
-                    }
+                        break;
                 }
-
 
                 file.write(depeches.get(i).getId()+" : "+catCourante+"\n");
             }
@@ -186,6 +181,7 @@ public class Classification {
     public static void main(String[] args) {
         //Chargement des dépêches en mémoire
 //        System.out.println("chargement des dépêches");
+        long startTime = System.currentTimeMillis(); // Début du chrono
         ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
 
         // Variables
@@ -226,17 +222,13 @@ public class Classification {
         vCategorie.add(environnementScience);
         vCategorie.add(sport);
 
-        ArrayList<PaireChaineEntier> score = new ArrayList<>();
-        for(Categorie uneCategorie : vCategorie){
-            score.add(new PaireChaineEntier(uneCategorie.getNom(), uneCategorie.score(depeches.get(403-1))));
-        }
+//        ArrayList<PaireChaineEntier> score = new ArrayList<>();
+//        for(Categorie uneCategorie : vCategorie){
+//            score.add(new PaireChaineEntier(uneCategorie.getNom(), uneCategorie.score(depeches.get(403-1))));
+//        }
 //        System.out.println(UtilitairePaireChaineEntier.chaineMax(score));
 
-
-
         Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
-
-        long startTime = System.currentTimeMillis(); // Début du chrono
 
         generationLexique(depeches, "ENVIRONNEMENT-SCIENCES", "./envsResult.txt");
         generationLexique(depeches, "CULTURE", "./cultureResult.txt");

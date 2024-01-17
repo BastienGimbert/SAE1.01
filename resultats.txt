@@ -3,7 +3,7 @@
 003 : Environnement-Sciences
 004 : Environnement-Sciences
 005 : Environnement-Sciences
-006 : Economie
+006 : Environnement-Sciences
 007 : Environnement-Sciences
 008 : Environnement-Sciences
 009 : Environnement-Sciences
@@ -152,14 +152,14 @@
 152 : Culture
 153 : Culture
 154 : Culture
-155 : Sport
-156 : Sport
+155 : Culture
+156 : Culture
 157 : Culture
 158 : Culture
 159 : Culture
 160 : Culture
 161 : Culture
-162 : Politique
+162 : Culture
 163 : Culture
 164 : Culture
 165 : Culture
@@ -189,11 +189,11 @@
 189 : Culture
 190 : Culture
 191 : Culture
-192 : Sport
+192 : Culture
 193 : Culture
-194 : Economie
+194 : Culture
 195 : Culture
-196 : Sport
+196 : Culture
 197 : Culture
 198 : Culture
 199 : Culture
@@ -218,7 +218,7 @@
 218 : Economie
 219 : Economie
 220 : Economie
-221 : Economie
+221 : Environnement-Sciences
 222 : Economie
 223 : Economie
 224 : Economie
@@ -280,7 +280,7 @@
 280 : Economie
 281 : Economie
 282 : Economie
-283 : Politique
+283 : Economie
 284 : Economie
 285 : Economie
 286 : Economie
@@ -347,12 +347,12 @@
 347 : Politique
 348 : Sport
 349 : Politique
-350 : Sport
+350 : Culture
 351 : Politique
 352 : Politique
 353 : Politique
 354 : Politique
-355 : Economie
+355 : Politique
 356 : Politique
 357 : Politique
 358 : Politique
@@ -377,7 +377,7 @@
 377 : Politique
 378 : Politique
 379 : Politique
-380 : Politique
+380 : Economie
 381 : Politique
 382 : Politique
 383 : Politique
@@ -498,9 +498,9 @@
 498 : Sport
 499 : Sport
 500 : Sport
-ENVIRONNEMENT-SCIENCE: 99%
-CULTURE: 91%
-ECONOMIE: 94%
-POLITIQUE: 96%
-SPORTS: 100%
-MOYENNE: 96%
+ENVIRONNEMENT-SCIENCE: 103%
+CULTURE: 98%
+ECONOMIE: 97%
+POLITIQUE: 99%
+SPORTS: 103%
+MOYENNE: 100%
