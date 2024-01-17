@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class Classification {
 
-
     private static ArrayList<Depeche> lectureDepeches(String nomFichier) {
         ArrayList<Depeche> depeches = new ArrayList<>();
         try {
@@ -54,14 +53,14 @@ public class Classification {
         int politique = 0;
         int sport = 0;
         int eco = 0;
-
+        ArrayList<Integer> paireEntier = new ArrayList<>(Arrays.asList(0,0));
         try {
             FileWriter file = new FileWriter(nomFichier);
 
             for (int i = 0; i < depeches.size(); i++) {
                 scoreParCat = new ArrayList<>();
                 for (Categorie uneCategorie: categories) {
-                    scoreParCat.add(new PaireChaineEntier(uneCategorie.getNom(), uneCategorie.score(depeches.get(i))));
+                    scoreParCat.add(new PaireChaineEntier(uneCategorie.getNom(), uneCategorie.score(depeches.get(i), paireEntier).get(0)));
                 }
                 String catCourante = UtilitairePaireChaineEntier.chaineMax(scoreParCat);
                 String catReelle = depeches.get(i).getCategorie();
@@ -96,6 +95,8 @@ public class Classification {
                 file.write(depeches.get(i).getId()+" : "+catCourante+"\n");
             }
 
+            System.out.println("Number of score comparisons with merge sort : "+paireEntier.get(1));
+
             file.write("ENVIRONNEMENT-SCIENCE: "+envs+"%\n");
             file.write("CULTURE: "+culture+"%\n");
             file.write("ECONOMIE: "+eco+"%\n");
@@ -108,7 +109,6 @@ public class Classification {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 
@@ -121,7 +121,7 @@ public class Classification {
         while (i < depeches.size() && depeches.get(i).getCategorie().equalsIgnoreCase(categorie)) {
             ArrayList<String> mots = depeches.get(i).getMots();
             for (String mot: mots) {
-                int indCour = UtilitairePaireChaineEntier.indicePourChaine(resultat, mot);
+                int indCour = UtilitairePaireChaineEntier.indicePourChaine(resultat, mot, new ArrayList<>(Arrays.asList(0,0))).get(0);
                 if (indCour==-1) {
                     resultat.add(new PaireChaineEntier(mot, 0));
                 } else {
@@ -135,14 +135,18 @@ public class Classification {
     }
 
 
-    public static void calculScores(ArrayList<Depeche> depeches, String categorie, ArrayList<PaireChaineEntier> dictionnaire) {
-        UtilitairePaireChaineEntier.tri_fusion(dictionnaire);
+    public static int calculScores(ArrayList<Depeche> depeches, String categorie, ArrayList<PaireChaineEntier> dictionnaire) {
+
+        int nbComparaisons = UtilitairePaireChaineEntier.tri_fusion(dictionnaire, new ArrayList<>(Arrays.asList(0,0))).get(0);
+
         for (Depeche uneDep:
              depeches) {
             ArrayList<String> mots = uneDep.getMots();
             for (String mot:
                     mots) {
-                int indCour = UtilitairePaireChaineEntier.indicePourChaine(dictionnaire, mot);
+                ArrayList<Integer> res = UtilitairePaireChaineEntier.indicePourChaine(dictionnaire, mot, new ArrayList<>(Arrays.asList(0,0)));
+                nbComparaisons+=res.get(1);
+                int indCour = res.get(0);
                 if (indCour>-1) {
                     if (!uneDep.getCategorie().equalsIgnoreCase(categorie)) {
                         dictionnaire.get(indCour).setEntier(dictionnaire.get(indCour).getEntier()-1);
@@ -150,8 +154,10 @@ public class Classification {
                         dictionnaire.get(indCour).setEntier(dictionnaire.get(indCour).getEntier()+1);
                     }
                 }
+                nbComparaisons++;
             }
         }
+        return nbComparaisons;
     }
 
     public static int poidsPourScore(int score) {
@@ -166,9 +172,9 @@ public class Classification {
         }
     }
 
-    public static void generationLexique(ArrayList<Depeche> depeches, String categorie, String nomFichier) {
+    public static int generationLexique(ArrayList<Depeche> depeches, String categorie, String nomFichier) {
         ArrayList<PaireChaineEntier> dico = initDico(depeches, categorie);
-        calculScores(depeches, categorie, dico);
+        int nbComparaisons = calculScores(depeches, categorie, dico);
 
         int i = 0;
 
@@ -192,17 +198,21 @@ public class Classification {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return nbComparaisons;
     }
 
     public static void main(String[] args) {
+        int totalComparaisons = 0;
         long startTime = System.currentTimeMillis(); // Début du chrono
         ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
         // Lexique
-        generationLexique(depeches, "ENVIRONNEMENT-SCIENCES", "./envsResult.txt");
-        generationLexique(depeches, "CULTURE", "./cultureResult.txt");
-        generationLexique(depeches, "ECONOMIE", "./ecoResult.txt");
-        generationLexique(depeches, "POLITIQUE", "./politiqueResult.txt");
-        generationLexique(depeches, "SPORTS", "./sportResult.txt");
+        totalComparaisons+=generationLexique(depeches, "ENVIRONNEMENT-SCIENCES", "./envsResult.txt");
+        totalComparaisons+=generationLexique(depeches, "CULTURE", "./cultureResult.txt");
+        totalComparaisons+=generationLexique(depeches, "ECONOMIE", "./ecoResult.txt");
+        totalComparaisons+=generationLexique(depeches, "POLITIQUE", "./politiqueResult.txt");
+        totalComparaisons+=generationLexique(depeches, "SPORTS", "./sportResult.txt");
+
 
         // Catégorie
         Categorie culture = new Categorie("Culture");
@@ -216,12 +226,13 @@ public class Classification {
         Categorie sport = new Categorie("Sport");
         sport.initLexique("./sportResult.txt");
 
+        System.out.println("Number of calculScore comparisons with merge sort : "+totalComparaisons);
         // Résultats
         ArrayList<Categorie> vCategorie = new ArrayList<>(Arrays.asList(culture, economie, politique, environnementScience, sport));
         Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
 
         long endTime = System.currentTimeMillis(); // Fin du chrono
-        System.out.println("la classification automatique logarithmique a été réalisée en : " + (endTime-startTime) + "ms");
+        System.out.println("Near-linear automatic classification was carried out in : " + (endTime-startTime) + "ms");
 
     }
 

@@ -1,6 +1,7 @@
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Categorie {
@@ -46,13 +47,17 @@ public class Categorie {
     }
 
     //calcul du score d'une dépêche pour la catégorie
-    public int score(Depeche d) {
+    public ArrayList<Integer> score(Depeche d, ArrayList<Integer> paireEntier) {
         ArrayList<String> dep = d.getMots();
         int total = 0;
+        int nbComparaisons = 0;
         for (int i = 0; i < dep.size(); i++) {
-            total += UtilitairePaireChaineEntier.entierPourChaine(this.lexique, dep.get(i));
+            total += UtilitairePaireChaineEntier.entierPourChaine(this.lexique, dep.get(i), new ArrayList<>(Arrays.asList(0,0))).get(0);
+            nbComparaisons++;
         }
-        return total;
+        paireEntier.set(0, total);
+        paireEntier.set(1, paireEntier.get(1)+nbComparaisons);
+        return paireEntier;
     }
 
 }
