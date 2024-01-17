@@ -80,20 +80,46 @@ public class UtilitairePaireChaineEntier {
         return moyenne / listePaires.size();
     }
 
-    public static void tri_bulle_ameliore(ArrayList<PaireChaineEntier> listePaires) {
-        int n = listePaires.size();
-        boolean ech = true;
-        while (ech) {
-            ech = false;
-            for (int i = 0; i < n - 1; i++) {
-                if (listePaires.get(i).getChaine().compareTo(listePaires.get(i + 1).getChaine())>0) {
-                    ech = true;
-                    PaireChaineEntier tmp = listePaires.get(i);
-                    listePaires.set(i, listePaires.get(i + 1));
-                    listePaires.set(i + 1, tmp);
-                }
+    public static void tri_fusion(ArrayList<PaireChaineEntier> listePaires) {
+        if (listePaires.size() > 1) {
+            int m = listePaires.size() / 2;
+            ArrayList<PaireChaineEntier> liste1 = new ArrayList<PaireChaineEntier>();
+            ArrayList<PaireChaineEntier> liste2 = new ArrayList<PaireChaineEntier>();
+            for (int i = 0; i < m; i++) {
+                liste1.add(listePaires.get(i));
             }
-            n--;
+            for (int i = m; i < listePaires.size(); i++) {
+                liste2.add(listePaires.get(i));
+            }
+            tri_fusion(liste1);
+            tri_fusion(liste2);
+            fusion(liste1, liste2, listePaires);
+        }
+    }
+
+    public static void fusion(ArrayList<PaireChaineEntier> liste1, ArrayList<PaireChaineEntier> liste2, ArrayList<PaireChaineEntier> listePaires) {
+        int i1 = 0;
+        int i2 = 0;
+        int i = 0;
+        while (i1 < liste1.size() && i2 < liste2.size()) {
+            if (liste1.get(i1).getChaine().compareTo(liste2.get(i2).getChaine())<0) {
+                listePaires.set(i, liste1.get(i1));
+                i1++;
+            } else {
+                listePaires.set(i, liste2.get(i2));
+                i2++;
+            }
+            i++;
+        }
+        while (i1 < liste1.size()) {
+            listePaires.set(i, liste1.get(i1));
+            i1++;
+            i++;
+        }
+        while (i2 < liste2.size()) {
+            listePaires.set(i, liste2.get(i2));
+            i2++;
+            i++;
         }
     }
 

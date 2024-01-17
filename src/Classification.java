@@ -59,30 +59,30 @@ public class Classification {
                     scoreParCat.add(new PaireChaineEntier(uneCategorie.getNom(), uneCategorie.score(depeches.get(i))));
                 }
                 String catCourante = UtilitairePaireChaineEntier.chaineMax(scoreParCat);
-
+                String catReelle = depeches.get(i).getCategorie();
                 switch (catCourante) {
                     case "Environnement-Sciences":
-                        if (depeches.get(i).getCategorie().equalsIgnoreCase("Environnement-Sciences")) {
+                        if (catReelle.equalsIgnoreCase("Environnement-Sciences")) {
                             envs++;
                         }
                         break;
                     case "Culture":
-                        if (depeches.get(i).getCategorie().equalsIgnoreCase("Culture")) {
+                        if (catReelle.equalsIgnoreCase("Culture")) {
                             culture++;
                         }
                         break;
                     case "Economie":
-                        if (depeches.get(i).getCategorie().equalsIgnoreCase("Economie")) {
+                        if (catReelle.equalsIgnoreCase("Economie")) {
                             eco++;
                         }
                         break;
                     case "Politique":
-                        if (depeches.get(i).getCategorie().equalsIgnoreCase("Politique")) {
+                        if (catReelle.equalsIgnoreCase("Politique")) {
                             politique++;
                         }
                         break;
                     case "Sport":
-                        if (depeches.get(i).getCategorie().equalsIgnoreCase("Sports")) {
+                        if (catReelle.equalsIgnoreCase("Sports")) {
                             sport++;
                         }
                         break;
@@ -131,7 +131,7 @@ public class Classification {
 
 
     public static void calculScores(ArrayList<Depeche> depeches, String categorie, ArrayList<PaireChaineEntier> dictionnaire) {
-        UtilitairePaireChaineEntier.tri_bulle_ameliore(dictionnaire);
+        UtilitairePaireChaineEntier.tri_fusion(dictionnaire);
         for (Depeche uneDep:
              depeches) {
             ArrayList<String> mots = uneDep.getMots();
@@ -193,8 +193,6 @@ public class Classification {
         long startTime = System.currentTimeMillis(); // Début du chrono
         ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
 
-
-
         generationLexique(depeches, "ENVIRONNEMENT-SCIENCES", "./envsResult.txt");
         generationLexique(depeches, "CULTURE", "./cultureResult.txt");
         generationLexique(depeches, "ECONOMIE", "./ecoResult.txt");
@@ -215,8 +213,6 @@ public class Classification {
 
         ArrayList<Categorie> vCategorie = new ArrayList<>(Arrays.asList(culture, economie, politique, environnementScience, sport));
         Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
-
-
 
         long endTime = System.currentTimeMillis(); // Fin du chrono
         System.out.println("la classification automatique logarithmique a été réalisée en : " + (endTime-startTime) + "ms");
