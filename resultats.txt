@@ -3,7 +3,7 @@
 003 : Environnement-Sciences
 004 : Environnement-Sciences
 005 : Environnement-Sciences
-006 : Environnement-Sciences
+006 : Economie
 007 : Environnement-Sciences
 008 : Environnement-Sciences
 009 : Environnement-Sciences
@@ -100,14 +100,14 @@
 100 : Environnement-Sciences
 101 : Culture
 102 : Culture
-103 : Sport
-104 : Sport
+103 : Culture
+104 : Culture
 105 : Culture
 106 : Culture
-107 : Sport
+107 : Culture
 108 : Culture
 109 : Economie
-110 : Economie
+110 : Culture
 111 : Culture
 112 : Culture
 113 : Culture
@@ -115,11 +115,11 @@
 115 : Culture
 116 : Culture
 117 : Culture
-118 : Sport
+118 : Culture
 119 : Culture
 120 : Culture
 121 : Culture
-122 : Culture
+122 : Politique
 123 : Culture
 124 : Culture
 125 : Culture
@@ -129,7 +129,7 @@
 129 : Culture
 130 : Culture
 131 : Culture
-132 : Environnement-Sciences
+132 : Culture
 133 : Culture
 134 : Culture
 135 : Culture
@@ -144,7 +144,7 @@
 144 : Culture
 145 : Culture
 146 : Culture
-147 : Politique
+147 : Sport
 148 : Culture
 149 : Culture
 150 : Culture
@@ -153,13 +153,13 @@
 153 : Culture
 154 : Culture
 155 : Culture
-156 : Politique
+156 : Culture
 157 : Culture
 158 : Culture
 159 : Culture
 160 : Culture
 161 : Culture
-162 : Politique
+162 : Culture
 163 : Culture
 164 : Culture
 165 : Culture
@@ -216,9 +216,9 @@
 216 : Economie
 217 : Economie
 218 : Economie
-219 : Sport
+219 : Economie
 220 : Economie
-221 : Environnement-Sciences
+221 : Economie
 222 : Economie
 223 : Economie
 224 : Economie
@@ -229,7 +229,7 @@
 229 : Economie
 230 : Economie
 231 : Economie
-232 : Sport
+232 : Economie
 233 : Economie
 234 : Economie
 235 : Environnement-Sciences
@@ -250,7 +250,7 @@
 250 : Economie
 251 : Economie
 252 : Economie
-253 : Economie
+253 : Politique
 254 : Politique
 255 : Economie
 256 : Economie
@@ -345,9 +345,9 @@
 345 : Politique
 346 : Politique
 347 : Politique
-348 : Politique
+348 : Sport
 349 : Politique
-350 : Politique
+350 : Culture
 351 : Politique
 352 : Politique
 353 : Politique
@@ -355,7 +355,7 @@
 355 : Politique
 356 : Politique
 357 : Politique
-358 : Economie
+358 : Politique
 359 : Politique
 360 : Politique
 361 : Politique
@@ -498,9 +498,9 @@
 498 : Sport
 499 : Sport
 500 : Sport
-ENVIRONNEMENT-SCIENCE: 99%
-CULTURE: 90%
-ECONOMIE: 94%
-POLITIQUE: 98%
+ENVIRONNEMENT-SCIENCE: 98%
+CULTURE: 97%
+ECONOMIE: 96%
+POLITIQUE: 97%
 SPORTS: 100%
-MOYENNE: 96%
+MOYENNE: 97%

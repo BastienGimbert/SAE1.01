@@ -3,23 +3,50 @@ import java.util.ArrayList;
 public class UtilitairePaireChaineEntier {
 
 
-    public static int indicePourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
-        int i = 0;
+//    public static int indicePourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
+//        int i = 0;
+//
+//        while (i < listePaires.size() && !listePaires.get(i).getChaine().equalsIgnoreCase(chaine)) {
+//            i++;
+//        }
+//        if (i == listePaires.size()) {
+//            return -1;
+//        } else {
+//            return i;
+//        }
+//
+//    }
 
-        while (i < listePaires.size() && !listePaires.get(i).getChaine().equals(chaine)) {
-            i++;
-        }
-        if (i == listePaires.size()) {
+    public static int indicePourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
+
+        if (listePaires.isEmpty() || listePaires.get(listePaires.size()-1).getChaine().compareTo(chaine)<0) {
             return -1;
         } else {
-            return i;
-        }
+            int inf = 0;
+            int sup = listePaires.size()-1;
+            int m;
 
+            while (inf < sup) {
+                m = (inf+sup) / 2;
+                if (listePaires.get(m).getChaine().compareTo(chaine)>=0) {
+                    sup = m;
+                } else {
+                    inf = m + 1;
+                }
+            }
+
+            if (listePaires.get(inf).getChaine().equals(chaine)) {
+                return inf;
+            } else {
+                return -1;
+            }
+
+        }
     }
 
     public static int entierPourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
         int i = 0;
-        while (i < listePaires.size() && !listePaires.get(i).getChaine().equals(chaine)) {
+        while (i < listePaires.size() && !listePaires.get(i).getChaine().equalsIgnoreCase(chaine)) {
             i++;
         }
         if (i < listePaires.size()) {
@@ -53,21 +80,52 @@ public class UtilitairePaireChaineEntier {
         return moyenne / listePaires.size();
     }
 
-    public static void tri_bulle_ameliore(ArrayList<PaireChaineEntier> listePaires) {
-        int n = listePaires.size();
-        boolean ech = true;
-        while (ech) {
-            ech = false;
-            for (int i = 0; i < n - 1; i++) {
-                if (listePaires.get(i).getChaine().compareTo(listePaires.get(i + 1).getChaine())>0) {
-                    ech = true;
-                    PaireChaineEntier tmp = listePaires.get(i);
-                    listePaires.set(i, listePaires.get(i + 1));
-                    listePaires.set(i + 1, tmp);
-                }
-            }
-            n--;
+    public static void tri_fusion(ArrayList<PaireChaineEntier> listePaires, int inf, int sup) {
+        if (inf < sup) {
+            int m = (inf+sup)/2;
+            tri_fusion(listePaires, inf, m);
+            tri_fusion(listePaires, m+1 , sup);
+            fusion(listePaires, inf, m, sup);
         }
+    }
+
+    public static void fusion(ArrayList<PaireChaineEntier> listePaires, int inf, int m, int sup) {
+        // { inf <= sup, m = (inf+sup)/2, listePaires[inf..m] trié, listePaires[m+1..sup] trié }
+        // => { listePaires[inf..sup] trié }
+        ArrayList<String> vTemp = new ArrayList<>();
+        int i1 = inf;
+        int i2 = m+1;
+
+        while (i1<=m && i2<=sup) {
+
+            if (listePaires.get(i1).getChaine().compareTo(listePaires.get(i2).getChaine())<=0) {
+                vTemp.add(listePaires.get(i1).getChaine());
+                i1++;
+
+
+            } else {
+                vTemp.add(listePaires.get(i2).getChaine());
+                i2++;
+            }
+        }
+
+        while (i2<=sup) {
+            vTemp.add(listePaires.get(i2).getChaine());
+            i2++;
+        }
+        while (i1<=m) {
+            vTemp.add(listePaires.get(i1).getChaine());
+            i1++;
+        }
+
+        int i = 0;
+        while (i < vTemp.size() && inf<=sup) {
+
+            listePaires.get(inf).setChaine(vTemp.get(i));
+            i++;
+            inf++;
+        }
+
     }
 
 }

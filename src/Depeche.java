@@ -27,10 +27,13 @@ public class Depeche {
         chaine = chaine.replace('\"', ' ');
         chaine = chaine.replace('(', ' ');
         chaine = chaine.replace(')', ' ');
+        chaine = chaine.replace(':', ' ');
+        chaine = chaine.replace('!', ' ');
+        chaine = chaine.replace('?', ' ');
         String[] tabchaine = chaine.split(" ");
         ArrayList<String> resultat = new ArrayList<String>();
         for (int i = 0; i < tabchaine.length; i++) {
-            if (!tabchaine[i].equals("")) {
+            if (!tabchaine[i].equalsIgnoreCase("") && !resultat.contains(tabchaine[i]) && tabchaine[i].length() > 4) {
                 resultat.add(tabchaine[i]);
             }
         }
