@@ -80,47 +80,52 @@ public class UtilitairePaireChaineEntier {
         return moyenne / listePaires.size();
     }
 
-    public static void tri_fusion(ArrayList<PaireChaineEntier> listePaires) {
-        if (listePaires.size() > 1) {
-            int m = listePaires.size() / 2;
-            ArrayList<PaireChaineEntier> liste1 = new ArrayList<PaireChaineEntier>();
-            ArrayList<PaireChaineEntier> liste2 = new ArrayList<PaireChaineEntier>();
-            for (int i = 0; i < m; i++) {
-                liste1.add(listePaires.get(i));
-            }
-            for (int i = m; i < listePaires.size(); i++) {
-                liste2.add(listePaires.get(i));
-            }
-            tri_fusion(liste1);
-            tri_fusion(liste2);
-            fusion(liste1, liste2, listePaires);
+    public static void tri_fusion(ArrayList<PaireChaineEntier> listePaires, int inf, int sup) {
+        if (inf < sup) {
+            int m = (inf+sup)/2;
+            tri_fusion(listePaires, inf, m);
+            tri_fusion(listePaires, m+1 , sup);
+            fusion(listePaires, inf, m, sup);
         }
     }
 
-    public static void fusion(ArrayList<PaireChaineEntier> liste1, ArrayList<PaireChaineEntier> liste2, ArrayList<PaireChaineEntier> listePaires) {
-        int i1 = 0;
-        int i2 = 0;
-        int i = 0;
-        while (i1 < liste1.size() && i2 < liste2.size()) {
-            if (liste1.get(i1).getChaine().compareTo(liste2.get(i2).getChaine())<0) {
-                listePaires.set(i, liste1.get(i1));
+    public static void fusion(ArrayList<PaireChaineEntier> listePaires, int inf, int m, int sup) {
+        // { inf <= sup, m = (inf+sup)/2, listePaires[inf..m] trié, listePaires[m+1..sup] trié }
+        // => { listePaires[inf..sup] trié }
+        ArrayList<String> vTemp = new ArrayList<>();
+        int i1 = inf;
+        int i2 = m+1;
+
+        while (i1<=m && i2<=sup) {
+
+            if (listePaires.get(i1).getChaine().compareTo(listePaires.get(i2).getChaine())<=0) {
+                vTemp.add(listePaires.get(i1).getChaine());
                 i1++;
+
+
             } else {
-                listePaires.set(i, liste2.get(i2));
+                vTemp.add(listePaires.get(i2).getChaine());
                 i2++;
             }
-            i++;
         }
-        while (i1 < liste1.size()) {
-            listePaires.set(i, liste1.get(i1));
-            i1++;
-            i++;
-        }
-        while (i2 < liste2.size()) {
-            listePaires.set(i, liste2.get(i2));
+
+        while (i2<=sup) {
+            vTemp.add(listePaires.get(i2).getChaine());
             i2++;
-            i++;
         }
+        while (i1<=m) {
+            vTemp.add(listePaires.get(i1).getChaine());
+            i1++;
+        }
+
+        int i = 0;
+        while (i < vTemp.size() && inf<=sup) {
+
+            listePaires.get(inf).setChaine(vTemp.get(i));
+            i++;
+            inf++;
+        }
+
     }
 
 }

@@ -9,33 +9,29 @@ public class Classification {
 
 
     private static ArrayList<Depeche> lectureDepeches(String nomFichier) {
+        //creation d'un tableau de dépêches
         ArrayList<Depeche> depeches = new ArrayList<>();
         try {
+            // lecture du fichier d'entrée
             FileInputStream file = new FileInputStream(nomFichier);
             Scanner scanner = new Scanner(file);
 
             while (scanner.hasNextLine()) {
                 String ligne = scanner.nextLine();
-                if (!ligne.startsWith(".N")) continue;
                 String id = ligne.substring(3);
-
                 ligne = scanner.nextLine();
                 String date = ligne.substring(3);
-
                 ligne = scanner.nextLine();
                 String categorie = ligne.substring(3);
-
-                StringBuilder lignes = new StringBuilder();
-                while (scanner.hasNextLine()) {
+                ligne = scanner.nextLine();
+                String lignes = ligne.substring(3);
+                while (scanner.hasNextLine() && !ligne.equalsIgnoreCase("")) {
                     ligne = scanner.nextLine();
-                    if (ligne.startsWith(".N")) {
-                        scanner.nextLine();
-                        break;
+                    if (!ligne.equalsIgnoreCase("")) {
+                        lignes = lignes + '\n' + ligne;
                     }
-                    lignes.append(ligne).append('\n');
                 }
-
-                Depeche uneDepeche = new Depeche(id, date, categorie, lignes.toString());
+                Depeche uneDepeche = new Depeche(id, date, categorie, lignes);
                 depeches.add(uneDepeche);
             }
             scanner.close();
@@ -136,7 +132,7 @@ public class Classification {
 
 
     public static void calculScores(ArrayList<Depeche> depeches, String categorie, ArrayList<PaireChaineEntier> dictionnaire) {
-        UtilitairePaireChaineEntier.tri_fusion(dictionnaire);
+        UtilitairePaireChaineEntier.tri_fusion(dictionnaire, 0, dictionnaire.size()-1);
         for (Depeche uneDep:
              depeches) {
             ArrayList<String> mots = uneDep.getMots();
@@ -221,7 +217,7 @@ public class Classification {
         Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
 
         long endTime = System.currentTimeMillis(); // Fin du chrono
-        System.out.println("la classification automatique logarithmique a été réalisée en : " + (endTime-startTime) + "ms");
+        System.out.println("la classification automatique avec le tri fusion a été réalisée en : " + (endTime-startTime) + "ms");
 
     }
 
