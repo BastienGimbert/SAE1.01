@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Classification {
 
-
+    // lecture des dépêches dans un fichier texte et création d'un tableau de dépêches (id, date, catégorie, lignes)
     private static ArrayList<Depeche> lectureDepeches(String nomFichier) {
         long startTime = System.currentTimeMillis();
         //creation d'un tableau de dépêches
@@ -45,7 +45,7 @@ public class Classification {
     }
 
 
-
+    // classement des dépêches dans un fichier texte
     public static void classementDepeches(ArrayList<Depeche> depeches, ArrayList<Categorie> categories, String nomFichier) {
         long startTime = System.currentTimeMillis();
         ArrayList<PaireChaineEntier> scoreParCat;
@@ -113,7 +113,7 @@ public class Classification {
 
     }
 
-
+    // initialisation du dictionnaire pour une catégorie à partir d'un tableau de dépêches et d'une catégorie donnée en paramètre
     public static ArrayList<PaireChaineEntier> initDico(ArrayList<Depeche> depeches, String categorie) {
         long startTime = System.currentTimeMillis();
         ArrayList<PaireChaineEntier> resultat = new ArrayList<>();
@@ -139,7 +139,7 @@ public class Classification {
 
     }
 
-
+    // calcul des scores pour une catégorie à partir d'un tableau de dépêches et d'un dictionnaire donné en paramètre
     public static void calculScores(ArrayList<Depeche> depeches, String categorie, ArrayList<PaireChaineEntier> dictionnaire) {
         long startTime = System.currentTimeMillis();
         UtilitairePaireChaineEntier.tri_fusion(dictionnaire, 0, dictionnaire.size()-1);
@@ -162,6 +162,7 @@ public class Classification {
         System.out.println("le calcul des scores pour la catégorie "+categorie+" a été réalisé en : " + (longtime-startTime) + "ms");
     }
 
+    // calcul du poids/force pour un score donné en paramètre
     public static int poidsPourScore(int score) {
         if (score<=0) {
             return 0;
@@ -173,7 +174,7 @@ public class Classification {
             return 3;
         }
     }
-
+    // génération du lexique pour une catégorie à partir d'un tableau de dépêches et d'une catégorie donnée en paramètre et écriture dans un fichier texte
     public static void generationLexique(ArrayList<Depeche> depeches, String categorie, String nomFichier) {
         long startTime = System.currentTimeMillis();
         ArrayList<PaireChaineEntier> dico = initDico(depeches, categorie);
@@ -204,7 +205,8 @@ public class Classification {
             e.printStackTrace();
         }
     }
-
+    
+    // programme principal
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis(); // Début du chrono
         ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
@@ -231,8 +233,10 @@ public class Classification {
         ArrayList<Categorie> vCategorie = new ArrayList<>(Arrays.asList(culture, economie, politique, environnementScience, sport));
         Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
 
+
         long endTime = System.currentTimeMillis(); // Fin du chrono
         System.out.println("\n\nla classification automatique avec le tri fusion a été réalisée en : " + (endTime-startTime) + "ms");
+
 
     }
 

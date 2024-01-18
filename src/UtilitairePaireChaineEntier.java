@@ -17,6 +17,7 @@ public class UtilitairePaireChaineEntier {
 //
 //    }
 
+    // Retourne l'indice de la chaine dans la liste via un algorithme de recherche dichotomique
     public static int indicePourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
 
         if (listePaires.isEmpty() || listePaires.get(listePaires.size()-1).getChaine().compareTo(chaine)<0) {
@@ -43,7 +44,7 @@ public class UtilitairePaireChaineEntier {
 
         }
     }
-
+    //  Assosie à chaque chaine de la liste le nombre d'occurences de cette chaine dans la liste
     public static int entierPourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
         int i = 0;
         while (i < listePaires.size() && !listePaires.get(i).getChaine().equalsIgnoreCase(chaine)) {
@@ -55,7 +56,7 @@ public class UtilitairePaireChaineEntier {
             return 0;
         }
     }
-
+    // Retourne la chaine qui a le plus d'occurences dans la liste
     public static String chaineMax(ArrayList<PaireChaineEntier> listePaires) {
         int max = 0;
 
@@ -67,7 +68,7 @@ public class UtilitairePaireChaineEntier {
         return listePaires.get(max).getChaine();
     }
 
-
+    // Calcul la moyenne des entiers de la liste
     public static float moyenne(ArrayList<PaireChaineEntier> listePaires) {
         float moyenne = 0.0f;
         int i = 0;
