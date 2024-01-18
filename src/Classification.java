@@ -69,37 +69,37 @@ public class Classification {
                 for (Categorie uneCategorie: categories) {
                     scoreParCat.add(new PaireChaineEntier(uneCategorie.getNom(), uneCategorie.score(depeches.get(i))));
                 }
-                String catCourante = UtilitairePaireChaineEntier.chaineMax(scoreParCat);
-                String catReelle = depeches.get(i).getCategorie();
-                switch (catCourante) {
+                String catObtenue = UtilitairePaireChaineEntier.chaineMax(scoreParCat); // Catégorie avec le score le plus élevé
+                String catAttendue = depeches.get(i).getCategorie(); // Catégorie définie dans le fichier depeches.txt
+                switch (catObtenue) {
                     case "Environnement-Sciences":
-                        if (catReelle.equalsIgnoreCase("Environnement-Sciences")) {
+                        if (catAttendue.equalsIgnoreCase("Environnement-Sciences")) {
                             envs++;
                         }
                         break;
                     case "Culture":
-                        if (catReelle.equalsIgnoreCase("Culture")) {
+                        if (catAttendue.equalsIgnoreCase("Culture")) {
                             culture++;
                         }
                         break;
                     case "Economie":
-                        if (catReelle.equalsIgnoreCase("Economie")) {
+                        if (catAttendue.equalsIgnoreCase("Economie")) {
                             eco++;
                         }
                         break;
                     case "Politique":
-                        if (catReelle.equalsIgnoreCase("Politique")) {
+                        if (catAttendue.equalsIgnoreCase("Politique")) {
                             politique++;
                         }
                         break;
                     case "Sport":
-                        if (catReelle.equalsIgnoreCase("Sports")) {
+                        if (catAttendue.equalsIgnoreCase("Sports")) {
                             sport++;
                         }
                         break;
                 }
 
-                file.write(depeches.get(i).getId()+" : "+catCourante+"\n");
+                file.write(depeches.get(i).getId()+" : "+catObtenue+"\n");
             }
 
             file.write("ENVIRONNEMENT-SCIENCE: "+envs+"%\n");
