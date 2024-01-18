@@ -3,53 +3,56 @@ import java.util.ArrayList;
 public class UtilitairePaireChaineEntier {
 
 
-//    public static int indicePourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
-//        int i = 0;
-//
-//        while (i < listePaires.size() && !listePaires.get(i).getChaine().equalsIgnoreCase(chaine)) {
-//            i++;
-//        }
-//        if (i == listePaires.size()) {
-//            return -1;
-//        } else {
-//            return i;
-//        }
-//
-//    }
-
     public static ArrayList<Integer> indicePourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine, ArrayList<Integer> paireEntier) {
-        int nbComparaisons = 0;
-        if (listePaires.isEmpty() || listePaires.get(listePaires.size()-1).getChaine().compareTo(chaine)<0) {
-            nbComparaisons++;
+        int i = 0;
+
+        while (i < listePaires.size() && !listePaires.get(i).getChaine().equalsIgnoreCase(chaine)) {
+            i++;
+        }
+        paireEntier.set(1, i);
+        if (i == listePaires.size()) {
             paireEntier.set(0, -1);
-            paireEntier.set(1, nbComparaisons);
             return paireEntier;
         } else {
-            int inf = 0;
-            int sup = listePaires.size()-1;
-            int m;
-
-            while (inf < sup) {
-                m = (inf+sup) / 2;
-                if (listePaires.get(m).getChaine().compareTo(chaine)>=0) {
-                    sup = m;
-                } else {
-                    inf = m + 1;
-                }
-                nbComparaisons++;
-            }
-            nbComparaisons++;
-            paireEntier.set(1, nbComparaisons);
-            if (listePaires.get(inf).getChaine().equals(chaine)) {
-                paireEntier.set(0, inf);
-                return paireEntier;
-            } else {
-                paireEntier.set(0, -1);
-                return paireEntier;
-            }
-
+            paireEntier.set(0, i);
+            return paireEntier;
         }
+
     }
+
+//    public static ArrayList<Integer> indicePourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine, ArrayList<Integer> paireEntier) {
+//        int nbComparaisons = 0;
+//        if (listePaires.isEmpty() || listePaires.get(listePaires.size()-1).getChaine().compareTo(chaine)<0) {
+//            nbComparaisons++;
+//            paireEntier.set(0, -1);
+//            paireEntier.set(1, nbComparaisons);
+//            return paireEntier;
+//        } else {
+//            int inf = 0;
+//            int sup = listePaires.size()-1;
+//            int m;
+//
+//            while (inf < sup) {
+//                m = (inf+sup) / 2;
+//                if (listePaires.get(m).getChaine().compareTo(chaine)>=0) {
+//                    sup = m;
+//                } else {
+//                    inf = m + 1;
+//                }
+//                nbComparaisons++;
+//            }
+//            nbComparaisons++;
+//            paireEntier.set(1, nbComparaisons);
+//            if (listePaires.get(inf).getChaine().equals(chaine)) {
+//                paireEntier.set(0, inf);
+//                return paireEntier;
+//            } else {
+//                paireEntier.set(0, -1);
+//                return paireEntier;
+//            }
+//
+//        }
+//    }
 
     public static ArrayList<Integer> entierPourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine, ArrayList<Integer> paireEntier) {
         int i = 0;
