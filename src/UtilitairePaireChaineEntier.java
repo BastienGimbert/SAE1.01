@@ -110,51 +110,6 @@ public class UtilitairePaireChaineEntier {
         return nbComparaisons;
     }
 
-//    public static ArrayList<Integer> tri_fusion(ArrayList<PaireChaineEntier> listePaires, ArrayList<Integer> paireEntier) {
-//        if (listePaires.size() > 1) {
-//            int m = listePaires.size() / 2;
-//            ArrayList<PaireChaineEntier> liste1 = new ArrayList<>();
-//            ArrayList<PaireChaineEntier> liste2 = new ArrayList<>();
-//
-//            for (int i = 0; i < m; i++) {
-//                liste1.add(listePaires.get(i));
-//            }
-//            for (int i = m; i < listePaires.size(); i++) {
-//                liste2.add(listePaires.get(i));
-//            }
-//
-//            tri_fusion(liste1, paireEntier);
-//            tri_fusion(liste2, paireEntier);
-//            paireEntier.set(0, paireEntier.get(0) + fusion(liste1, liste2, listePaires));
-//        }
-//
-//        return paireEntier;
-//    }
-//
-//    public static int fusion(ArrayList<PaireChaineEntier> liste1, ArrayList<PaireChaineEntier> liste2, ArrayList<PaireChaineEntier> listePaires) {
-//        int i1 = 0, i2 = 0, i = 0, nbComparaisons = 0;
-//
-//        while (i1 < liste1.size() && i2 < liste2.size()) {
-//            nbComparaisons++;
-//            if (liste1.get(i1).getChaine().compareTo(liste2.get(i2).getChaine()) < 0) {
-//                listePaires.set(i, liste1.get(i1++));
-//            } else {
-//                listePaires.set(i, liste2.get(i2++));
-//            }
-//            i++;
-//        }
-//
-//        while (i1 < liste1.size()) {
-//            listePaires.set(i++, liste1.get(i1++));
-//        }
-//        while (i2 < liste2.size()) {
-//            listePaires.set(i++, liste2.get(i2++));
-//        }
-//
-//        return nbComparaisons;
-//
-//    }
-
     public static int tri_fusion(ArrayList<PaireChaineEntier> listePaires, int inf, int sup) {
         int nbComparaisons = 0;
         if (inf < sup) {

@@ -91,7 +91,7 @@ public class Classification {
                 file.write(depeches.get(i).getId()+" : "+catCourante+"\n");
             }
 
-            System.out.println("Number of score comparisons with merge sort : "+paireEntier.get(1));
+            System.out.println("Number of score comparisons with optimized bubble sort : "+paireEntier.get(1));
 
             file.write("ENVIRONNEMENT-SCIENCE: "+envs+"%\n");
             file.write("CULTURE: "+culture+"%\n");
@@ -133,7 +133,7 @@ public class Classification {
 
     public static int calculScores(ArrayList<Depeche> depeches, String categorie, ArrayList<PaireChaineEntier> dictionnaire) {
 
-        int nbComparaisons = UtilitairePaireChaineEntier.tri_fusion(dictionnaire, 0, dictionnaire.size()-1);
+        int nbComparaisons = UtilitairePaireChaineEntier.tri_bulle_ameliore(dictionnaire);
 
         for (Depeche uneDep:
              depeches) {
@@ -222,13 +222,13 @@ public class Classification {
         Categorie sport = new Categorie("Sport");
         sport.initLexique("./sportResult.txt");
 
-        System.out.println("Number of calculScore comparisons with merge sort : "+totalComparaisons);
+        System.out.println("Number of calculScore comparisons with optimized bubble sort : "+totalComparaisons);
         // Résultats
         ArrayList<Categorie> vCategorie = new ArrayList<>(Arrays.asList(culture, economie, politique, environnementScience, sport));
         Classification.classementDepeches(depeches, vCategorie, "./resultats.txt");
 
         long endTime = System.currentTimeMillis(); // Fin du chrono
-        System.out.println("Near-linear automatic classification was carried out in : " + (endTime-startTime) + "ms");
+        System.out.println("Automatic classification with optimized bubble sorting was carried out in : " + (endTime-startTime) + "ms");
 
     }
 
