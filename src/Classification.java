@@ -7,8 +7,11 @@ import java.util.Scanner;
 
 public class Classification {
 
-    // lecture des dépêches dans un fichier texte et création d'un tableau de dépêches (id, date, catégorie, lignes)
+
     private static ArrayList<Depeche> lectureDepeches(String nomFichier) {
+        // { nomFichier non vide }
+        // => { un tableau de dépêches contenant les dépêches du fichier nomFichier }
+
         long startTime = System.currentTimeMillis();
         //creation d'un tableau de dépêches
         ArrayList<Depeche> depeches = new ArrayList<>();
@@ -45,8 +48,11 @@ public class Classification {
     }
 
 
-    // classement des dépêches dans un fichier texte
     public static void classementDepeches(ArrayList<Depeche> depeches, ArrayList<Categorie> categories, String nomFichier) {
+        // { depeches non vide, categories non vide, nomFichier non vide }
+        // => { un fichier nomFichier est créé et contient le classement des depeches selon les categories,
+        // et le pourcentage de depeches bien classées pour chaque catégorie avec une moyenne générale de précision du système }
+
         long startTime = System.currentTimeMillis();
         ArrayList<PaireChaineEntier> scoreParCat;
         int envs = 0;
@@ -113,8 +119,9 @@ public class Classification {
 
     }
 
-    // initialisation du dictionnaire pour une catégorie à partir d'un tableau de dépêches et d'une catégorie donnée en paramètre
     public static ArrayList<PaireChaineEntier> initDico(ArrayList<Depeche> depeches, String categorie) {
+        // { depeches non vide, categorie non vide }
+        // => { un tableau de PaireChaineEntier contenant les mots de la catégorie et leur fréquence d'apparition dans la catégorie }
         long startTime = System.currentTimeMillis();
         ArrayList<PaireChaineEntier> resultat = new ArrayList<>();
         int i = 0;
@@ -139,8 +146,11 @@ public class Classification {
 
     }
 
-    // calcul des scores pour une catégorie à partir d'un tableau de dépêches et d'un dictionnaire donné en paramètre
+
+
     public static void calculScores(ArrayList<Depeche> depeches, String categorie, ArrayList<PaireChaineEntier> dictionnaire) {
+        // { depeches non vide, categorie non vide, dictionnaire non vide }
+        // => { le dictionnaire contient les mots de la catégorie et leur score }
         long startTime = System.currentTimeMillis();
         UtilitairePaireChaineEntier.tri_fusion(dictionnaire, 0, dictionnaire.size()-1);
         for (Depeche uneDep:
@@ -162,8 +172,10 @@ public class Classification {
         System.out.println("le calcul des scores pour la catégorie "+categorie+" a été réalisé en : " + (longtime-startTime) + "ms");
     }
 
-    // calcul du poids/force pour un score donné en paramètre
+
     public static int poidsPourScore(int score) {
+        // { score >= 0 }
+        // => { le poids correspondant au score }
         if (score<=0) {
             return 0;
         } else if (score<4) {
@@ -174,8 +186,11 @@ public class Classification {
             return 3;
         }
     }
-    // génération du lexique pour une catégorie à partir d'un tableau de dépêches et d'une catégorie donnée en paramètre et écriture dans un fichier texte
+
+
     public static void generationLexique(ArrayList<Depeche> depeches, String categorie, String nomFichier) {
+        // { depeches non vide, categorie non vide, nomFichier non vide }
+        // => { un fichier nomFichier est créé et contient le lexique de la catégorie trié par ordre croissant de chaines }
         long startTime = System.currentTimeMillis();
         ArrayList<PaireChaineEntier> dico = initDico(depeches, categorie);
         calculScores(depeches, categorie, dico);

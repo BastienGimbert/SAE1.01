@@ -25,8 +25,8 @@ public class Categorie {
     }
 
 
-    // initialisation du lexique de la catégorie à partir du contenu d'un fichier texte
     public void initLexique(String nomFichier) {
+        // { nomFichier est le nom d'un fichier texte contenant des mots et des entiers séparés par ':' }
         try {
             // lecture du fichier d'entrée
             FileInputStream file = new FileInputStream(nomFichier);
@@ -47,6 +47,9 @@ public class Categorie {
 
     //calcul du score d'une dépêche pour la catégorie
     public int score(Depeche d) {
+        // { d est une dépêche }
+        // => { score de d pour la catégorie }
+
         ArrayList<String> dep = d.getMots();
         int total = 0;
         for (int i = 0; i < dep.size(); i++) {

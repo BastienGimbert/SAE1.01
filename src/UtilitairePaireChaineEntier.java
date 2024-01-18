@@ -17,8 +17,11 @@ public class UtilitairePaireChaineEntier {
 //
 //    }
 
-    // Retourne l'indice de la chaine dans la liste via un algorithme de recherche dichotomique
     public static int indicePourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
+        // { listePaires[0..listePaires.size()-1] trié }
+        // => { indice de la première occurence de chaine dans listePaires }
+        // => { Si chaine n'est pas dans listePaires, retourne -1 }
+
 
         if (listePaires.isEmpty() || listePaires.get(listePaires.size()-1).getChaine().compareTo(chaine)<0) {
             return -1;
@@ -44,20 +47,23 @@ public class UtilitairePaireChaineEntier {
 
         }
     }
-    //  Assosie à chaque chaine de la liste le nombre d'occurences de cette chaine dans la liste
     public static int entierPourChaine(ArrayList<PaireChaineEntier> listePaires, String chaine) {
+        // { listePaires[0..listePaires.size()-1] trié }
+        // => { entier associé à la première occurence de chaine dans listePaires }
+        // => { Si chaine n'est pas dans listePaires, retourne 0 }
         int i = 0;
         while (i < listePaires.size() && !listePaires.get(i).getChaine().equalsIgnoreCase(chaine)) {
             i++;
         }
         if (i < listePaires.size()) {
-            return i;
+            return listePaires.get(i).getEntier();
         } else {
             return 0;
         }
     }
-    // Retourne la chaine qui a le plus d'occurences dans la liste
     public static String chaineMax(ArrayList<PaireChaineEntier> listePaires) {
+        // { listePaires[0..listePaires.size()-1] trié }
+        // => { Retourne la chaine qui a le plus d'occurences dans la liste }
         int max = 0;
 
         for(int i=1; i<listePaires.size(); i++){
@@ -68,8 +74,10 @@ public class UtilitairePaireChaineEntier {
         return listePaires.get(max).getChaine();
     }
 
-    // Calcul la moyenne des entiers de la liste
     public static float moyenne(ArrayList<PaireChaineEntier> listePaires) {
+        // { listePaires[0..listePaires.size()-1] trié }
+        // => { moyenne des entiers de listePaires }
+
         float moyenne = 0.0f;
         int i = 0;
 
